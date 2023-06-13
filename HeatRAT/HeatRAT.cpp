@@ -122,14 +122,17 @@ int main()
 		if (command == "!preferences")
 		{
 			Preferences(logo);
+			logoShow = true;
 		}
 		if (command == "!ports")
 		{
 			Ports(logo);
+			logoShow = true;
 		}
 		if (command == "!sessions")
 		{
 			Sessions(logo);
+			logoShow = true;
 		}
 		if (command == "!github")
 		{
