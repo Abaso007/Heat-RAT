@@ -13,7 +13,7 @@
 |                                        https://github.com/Nick-Vinesmoke/Heat-RAT                                      |
 ##########################################################################################################################
 */
-
+#pragma once
 
 #include <iostream>
 #include <Windows.h>
