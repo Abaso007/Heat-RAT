@@ -18,9 +18,18 @@
 #include "main.h"
 #include "transfer.h"
 #include "sessionSelecter.h"
+#include <Lmcons.h>
+#include <direct.h>
 
-
-
+std::string GetUser()
+{
+	TCHAR s[UNLEN + 1];
+	DWORD sizethis = UNLEN + 1;
+	GetUserName((TCHAR*)s, &sizethis);
+	std::wstring ws(s);
+	std::string userName(ws.begin(), ws.end());
+	return userName;
+}
 
 
 void Sessions(string logo)
@@ -36,20 +45,24 @@ void Sessions(string logo)
 	string something = "";
 	string curentUSER = "";
 	logoShow = true;
-	string name = "";
 	string ip = "";
 	string pc = "";
 	string use = "";
 	string date = "";
-	string cunt = "";
+	string mac = "";
 	string os = "";
-	string tim = "";
+	string lang = "";
 	string curentUsers = R"U( )U";
 	int i = 0;
 	int counte = 0;
 	system("cls");
 	string user = "Modules\\Grabbed\\users.txt";
 	string comands_sessions = "Modules\\Commands\\Sessions.txt";
+	string pcUser = GetUser();
+	string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736";
+	int result = _mkdir(seesionPath.c_str());
+	seesionPath += "/cache.txt";
+
 	while (true)
 	{
 		if (logoShow)
@@ -59,35 +72,33 @@ void Sessions(string logo)
 			cout << logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|                                                       Sessions                                                       |\n");
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|          Name|              IP|              PC|            User|   Install_date|         Cuntry|             OS|Time|");
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
+			printf("|                                                        Sessions                                                         |\n");
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
+			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
 			ifstream file(user);
 			if (file.is_open())
 			{
 				while (getline(file, line))
 				{
-					if (counte == 0 + (8 * i))
-						name = line;
-					if (counte == 1 + (8 * i))
-						ip = line;
-					if (counte == 2 + (8 * i))
-						pc = line;
-					if (counte == 3 + (8 * i))
+					if (counte == 0 + (7 * i))
 						use = line;
-					if (counte == 4 + (8 * i))
+					if (counte == 1 + (7 * i))
+						pc = line;
+					if (counte == 2 + (7 * i))
+						ip = line;
+					if (counte == 3 + (7 * i))
+						mac = line;
+					if (counte == 4 + (7 * i))
 						date = line;
-					if (counte == 5 + (8 * i))
-						cunt = line;
-					if (counte == 6 + (8 * i))
+					if (counte == 5 + (7 * i))
 						os = line;
-					if (counte == 7 + (8 * i))
+					if (counte == 6 + (7 * i))
 					{
-						tim = line;
-						printf("|%14s|%16s|%16s|%16s|%15s|%15s|%15s|%4s|\n", name.c_str(), ip.c_str(), pc.c_str(), use.c_str(), date.c_str(), cunt.c_str(), os.c_str(), tim.c_str());
-						printf("------------------------------------------------------------------------------------------------------------------------\n");
+						lang = line;
+						printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
+						printf("--------------------------------------------------------------------------------------------------------------------------\n");
 						i++;
 					}
 					counte++;
@@ -102,6 +113,37 @@ void Sessions(string logo)
 			}
 			file.close();
 			line = "";
+			try 
+			{
+				ifstream file(seesionPath);
+				if (file.is_open()) 
+				{
+					while (getline(file, line))
+					{
+						if (counte == 0 + (7 * i))
+							use = line;
+						if (counte == 1 + (7 * i))
+							pc = line;
+						if (counte == 2 + (7 * i))
+							ip = line;
+						if (counte == 3 + (7 * i))
+							mac = line;
+						if (counte == 4 + (7 * i))
+							date = line;
+						if (counte == 5 + (7 * i))
+							os = line;
+						if (counte == 6 + (7 * i))
+						{
+							lang = line;
+							printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
+							printf("--------------------------------------------------------------------------------------------------------------------------\n");
+							i++;
+						}
+						counte++;
+					}
+				}
+			}
+			catch (...){}
 			printf("Hi %s!!!\n   !help ==for==> command list\n", curentUSER.c_str());
 		}
 		col = 6;
@@ -126,10 +168,20 @@ void Sessions(string logo)
 			cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("Name: ");
+			printf("User: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> name;
+			cin.clear();
+			cin.ignore(32767, '\n');
+			getline(cin, use);
+			col = 8;
+			SetConsoleTextAttribute(hConsole, col);
+			printf("PC: ");
+			col = 11;
+			SetConsoleTextAttribute(hConsole, col);
+			cin.clear();
+			//cin.ignore(32767, '\n');
+			getline(cin, pc);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("IP: ");
@@ -138,40 +190,32 @@ void Sessions(string logo)
 			cin >> ip;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("PC: ");
+			printf("MAC: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> pc;
-			col = 8;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("User: ");
-			col = 11;
-			SetConsoleTextAttribute(hConsole, col);
-			cin >> use;
+			cin >> mac;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Install_date: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> date;
-			col = 8;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("Cuntry: ");
-			col = 11;
-			SetConsoleTextAttribute(hConsole, col);
-			cin >> cunt;
+			cin.clear();
+			cin.ignore(32767, '\n');
+			getline(cin, date);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("OS: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> os;
+			cin.clear();
+			//cin.ignore(32767, '\n');
+			getline(cin, os);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("Time: ");
+			printf("Language: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> tim;
+			cin >> lang;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("opening...\n");
@@ -185,23 +229,18 @@ void Sessions(string logo)
 			ofstream file(user, ios::app);
 			if (file.is_open())
 			{
-				file << name << endl;
-				file << ip << endl;
-				file << pc << endl;
 				file << use << endl;
+				file << pc << endl;
+				file << ip << endl;
+				file << mac << endl;
 				file << date << endl;
-				file << cunt << endl;
 				file << os << endl;
-				file << tim << endl;
+				file << lang << endl;
+				col = 2;
+				SetConsoleTextAttribute(hConsole, col);
+				printf("done!!!\n");
 				col = 9;
 				SetConsoleTextAttribute(hConsole, col);
-				printf("------------------------------------------------------------------------------------------------------------------------\n");
-				printf("|                                                     New Session                                                      |\n");
-				printf("------------------------------------------------------------------------------------------------------------------------\n");
-				printf("|          Name|              IP|              PC|            User|   Install_date|         Cuntry|             OS|Time|");
-				printf("------------------------------------------------------------------------------------------------------------------------\n");
-				printf("|%14s|%16s|%16s|%16s|%15s|%15s|%15s|%4s|\n", name.c_str(), ip.c_str(), pc.c_str(), use.c_str(), date.c_str(), cunt.c_str(), os.c_str(), tim.c_str());
-				printf("------------------------------------------------------------------------------------------------------------------------\n");
 			}
 			else
 			{
@@ -327,7 +366,7 @@ void Sessions(string logo)
 			int test = 0;
 			srand(time(NULL));
 			cout << "\n\n";
-			
+
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			ifstream file(user);
