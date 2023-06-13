@@ -1,4 +1,17 @@
 --------------------------------------
+13.06.2023
+v3.0.0
+↓changes↓
+◦ fixed bugs
+◦ fixed dlls
+◦ fixed errors with building
+◦ fixed errors with stub
+◦ fixed errors with ports
+◦ fixed errors with connection
+◦ added more functions
+◦ improved connection security
+◦ etc
+--------------------------------------
 16.04.2023
 v2.0.0
 ↓changes↓
