@@ -19,6 +19,7 @@
 #include "transfer.h"
 #include "sessionSelecter.h"
 #include <Lmcons.h>
+#include <cstdio>
 #include <direct.h>
 
 std::string GetUser()
@@ -51,6 +52,7 @@ void Sessions(string logo)
 	string date = "";
 	string mac = "";
 	string os = "";
+	int extraSessionsNum = 0;
 	string lang = "";
 	string curentUsers = R"U( )U";
 	int i = 0;
@@ -113,6 +115,7 @@ void Sessions(string logo)
 			}
 			file.close();
 			line = "";
+			extraSessionsNum = i;
 			try 
 			{
 				ifstream file(seesionPath);
@@ -270,55 +273,83 @@ void Sessions(string logo)
 			cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(user);
-			if (file.is_open())
+			if (i == extraSessionsNum)
 			{
-				while (getline(file, line))
-				{
-					if (counte >= 0 + (8 * i) && counte <= 7 + (8 * i))
-					{
-					}
-					else
-					{
-						curentUsers.insert(curentUsers.length() - 1, line + "\n");
-					}
-					counte++;
-				}
-			}
-			else
-			{
-
-				col = 4;
-				SetConsoleTextAttribute(hConsole, col);
-				printf("Fatal ERROR!!!\n");
-			}
-			curentUsers.pop_back();
-			file.close();
-			line = "";
-			ofstream newfile;
-			newfile.open(user);
-			if (newfile.is_open())
-			{
-				newfile << curentUsers;
 				col = 2;
 				SetConsoleTextAttribute(hConsole, col);
-				printf("session number %d is closed\n", i);
+				if (std::remove(seesionPath.c_str()) == 0) {
+					printf("session number %d is closed\n", i);
+				}
+				else 
+				{
+					col = 4;
+					SetConsoleTextAttribute(hConsole, col);
+					printf("Fatal ERROR!!!\n");
+				}
+				
+				col = 8;
+				SetConsoleTextAttribute(hConsole, col);
+				system("pause");
+				system("cls");
+				logoShow = true;
+				Sessions(logo);
+				break;
+				cout << "\n\n";
 			}
 			else
 			{
+				ifstream file(user);
+				if (file.is_open())
+				{
+					while (getline(file, line))
+					{
+						if (counte >= 0 + (7 * i) && counte <= 6 + (7 * i))
+						{
+						}
+						else
+						{
+							curentUsers.insert(curentUsers.length() - 1, line + "\n");
+						}
+						counte++;
+					}
+				}
+				else
+				{
 
-				col = 4;
+					col = 4;
+					SetConsoleTextAttribute(hConsole, col);
+					printf("Fatal ERROR!!!\n");
+				}
+				curentUsers.pop_back();
+				file.close();
+				line = "";
+				ofstream newfile;
+				newfile.open(user);
+				if (newfile.is_open())
+				{
+					newfile << curentUsers;
+					col = 2;
+					SetConsoleTextAttribute(hConsole, col);
+					printf("session number %d is closed\n", i);
+				}
+				else
+				{
+
+					col = 4;
+					SetConsoleTextAttribute(hConsole, col);
+					printf("Fatal ERROR!!!\n");
+				}
+				newfile.close();
+				col = 8;
 				SetConsoleTextAttribute(hConsole, col);
-				printf("Fatal ERROR!!!\n");
+				system("pause");
+				system("cls");
+				logoShow = true;
+				Sessions(logo);
+				break;
+				cout << "\n\n";
 			}
-			newfile.close();
-			col = 8;
-			SetConsoleTextAttribute(hConsole, col);
-			system("cls");
-			logoShow = true;
-			Sessions(logo);
-			break;
-			cout << "\n\n";
+			
 		}
 
 		if (command == "!closeAll")
@@ -326,6 +357,7 @@ void Sessions(string logo)
 			cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
+			std::remove(seesionPath.c_str());
 			printf("closing...\n");
 			printf("[");
 			for (int i = 0; i <= 60; i++)
@@ -478,8 +510,21 @@ void Sessions(string logo)
 			cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			Choose(logo, i);
-			break;
+			if (i == extraSessionsNum) 
+			{
+				col = 4;
+				SetConsoleTextAttribute(hConsole, col);
+				printf("\nFatal ERROR!!!\n\tThis session is protected by the admin\n\t\t");
+				system("pause");
+				system("cls");
+				Sessions(logo);
+			}
+			else 
+			{
+				Choose(logo, i);
+				break;
+			}
+
 		}
 		else if (command != "!test" && command != "!choose" && command != "!test" && command != "!closeAll" && command != "!close" && command != "!open" && command != "!help" && command != "!menu")
 		{
