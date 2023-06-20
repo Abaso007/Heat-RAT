@@ -145,6 +145,10 @@ void Sessions(string logo)
 						counte++;
 					}
 				}
+				else
+				{
+					extraSessionsNum = -9999999;
+				}
 			}
 			catch (...){
 				extraSessionsNum = -9999999;
