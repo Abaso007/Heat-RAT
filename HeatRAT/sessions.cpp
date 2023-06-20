@@ -146,7 +146,9 @@ void Sessions(string logo)
 					}
 				}
 			}
-			catch (...){}
+			catch (...){
+				extraSessionsNum = -9999999;
+			}
 			printf("Hi %s!!!\n   !help ==for==> command list\n", curentUSER.c_str());
 		}
 		col = 6;
@@ -407,7 +409,7 @@ void Sessions(string logo)
 
 				while (getline(file, line))
 				{
-					if (counte == 0 + (8 * i))
+					if (counte == 0 + (7 * i))
 					{
 						col = 8;
 						SetConsoleTextAttribute(hConsole, col);
@@ -510,20 +512,30 @@ void Sessions(string logo)
 			cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			if (i == extraSessionsNum) 
+			if (i <= extraSessionsNum && i >= 0)
 			{
-				col = 4;
-				SetConsoleTextAttribute(hConsole, col);
-				printf("\nFatal ERROR!!!\n\tThis session is protected by the admin\n\t\t");
-				system("pause");
-				system("cls");
-				Sessions(logo);
+				if (i == extraSessionsNum)
+				{
+					col = 4;
+					SetConsoleTextAttribute(hConsole, col);
+					printf("\nFatal ERROR!!!\n\tThis session is protected by the admin\n\t\t");
+					system("pause");
+					system("cls");
+					Sessions(logo);
+				}
+				else
+				{
+					Choose(logo, i);
+					break;
+				}
 			}
 			else 
 			{
-				Choose(logo, i);
-				break;
+				col = 4;
+				SetConsoleTextAttribute(hConsole, col);
+				printf("\nFatal ERROR!!!\n\n\n");
 			}
+			
 
 		}
 		else if (command != "!test" && command != "!choose" && command != "!test" && command != "!closeAll" && command != "!close" && command != "!open" && command != "!help" && command != "!menu")

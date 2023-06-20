@@ -35,14 +35,13 @@ void Choose(string logo, int choose)
 	string curentUSER = "";
 	
 	logoShow= true;
-	string name = "";
 	string ip = "";
 	string pc = "";
 	string use = "";
 	string date = "";
-	string cunt = "";
+	string mac = "";
 	string os = "";
-	string tim = "";
+	string lang = "";
 	int counte = 0;
 	system("cls");
 	string user = "Modules\\Grabbed\\users.txt";
@@ -65,36 +64,33 @@ void Choose(string logo, int choose)
 			cout << logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|                                                    Sessions num %2d                                                   |\n", choose);
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|          Name|              IP|              PC|            User|   Install_date|         Cuntry|             OS|Time|");
-			printf("------------------------------------------------------------------------------------------------------------------------\n");
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
+			printf("|                                                    Sessions num %2d                                                    |\n", choose);
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
+			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
+			printf("--------------------------------------------------------------------------------------------------------------------------\n");
 			ifstream file(user);
 			if (file.is_open())
 			{
 				while (getline(file, line))
 				{
-					if (counte == 0 + (8 * choose))
-						name = line;
-					if (counte == 1 + (8 * choose))
-						ip = line;
-					if (counte == 2 + (8 * choose))
-						pc = line;
-					if (counte == 3 + (8 * choose))
+					if (counte == 0 + (7 * choose))
 						use = line;
-					if (counte == 4 + (8 * choose))
+					if (counte == 1 + (7 * choose))
+						pc = line;
+					if (counte == 2 + (7 * choose))
+						ip = line;
+					if (counte == 3 + (7 * choose))
+						mac = line;
+					if (counte == 4 + (7 * choose))
 						date = line;
-					if (counte == 5 + (8 * choose))
-						cunt = line;
-					if (counte == 6 + (8 * choose))
+					if (counte == 5 + (7 * choose))
 						os = line;
-					if (counte == 7 + (8 * choose))
+					if (counte == 6 + (7 * choose))
 					{
-						tim = line;
-						printf("|%14s|%16s|%16s|%16s|%15s|%15s|%15s|%4s|\n", name.c_str(), ip.c_str(), pc.c_str(), use.c_str(), date.c_str(), cunt.c_str(), os.c_str(), tim.c_str());
-						printf("------------------------------------------------------------------------------------------------------------------------\n");
-						break;
+						lang = line;
+						printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
+						printf("--------------------------------------------------------------------------------------------------------------------------\n");
 					}
 					counte++;
 				}
