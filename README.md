@@ -12,7 +12,6 @@
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
-
 [RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.2)
 ---
 🔭Program for remote control of windows computers via cmd. Written in C++
@@ -177,7 +176,9 @@ open [issues](https://github.com/Nick-Vinesmoke/Heat-RAT/issues) or [pull reques
 or 
 
 <a href="https://github.com/Nick-Vinesmoke"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>
-   <a href="https://discordapp.com/users/798503509522645012/"><img src="https://img.shields.io/badge/Discord-003E54?style=for-the-badge&logo=Discord&logoColor=white"></a>
+   <a href="https://discord.gg/ufvyg5F2j4"><img src="https://img.shields.io/badge/Discord-003E54?style=for-the-badge&logo=Discord&logoColor=white"></a>
+   
+Our Discord server <a href="https://discord.gg/ufvyg5F2j4">join us</a>
    
 ---
 [go up](#up)
