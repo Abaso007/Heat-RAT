@@ -169,13 +169,6 @@ void Choose(string logo, int choose)
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
 			cout << "\n\n";
-			//HRESULT URLDownloadToFile(
-			//	LPUNKNOWN            pCaller,
-			//	LPCTSTR              szURL,
-			//	LPCTSTR              szFileName,
-			//	_Reserved_ DWORD                dwReserved,
-			//	LPBINDSTATUSCALLBACK lpfnCB
-			//);
 
 		}
 		if (command == "!photoWebcam")

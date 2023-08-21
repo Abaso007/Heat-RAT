@@ -46,13 +46,7 @@ int main()
 ##########################################################################################################################)LOGO";
 	string comands_menu = "Modules\\Commands\\Menu.txt";
 	string about = "Modules\\About\\about.txt";
-	//string comands_port = "Modules\\Commands\\Ports.txt";
-	//string comands_preferences = "Modules\\Commands\\Preferences.txt";
-	//string comands_session = "Modules\\Commands\\Session.txt";
-	//string comands_sessions = "Modules\\Commands\\Sessions.txt";
 	string logs = "Modules\\Grabbed\\logs.txt";
-	//string user = "Modules\\Grabbed\\users.txt";
-	//string prefrences = "Modules\\Preferences\\ports.txt";
 	string dll1 = "Modules\\dlls\\libstdc++-6.dll";
 	string dll4 = "Modules\\dlls\\ucrtbased.dll";
 	string dll2 = "Modules\\dlls\\msvcp140d.dll";

