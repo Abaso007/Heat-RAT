@@ -19,12 +19,31 @@
 |##########################################################################################################|
 */
 
+/// <summary>
+/// shows all commands list
+/// </summary>
+/// <param name="path to .txt"></param>
 void Help(string);
 
+/// <summary>
+/// build .exe
+/// </summary>
 void Build();
 
+/// <summary>
+/// preferences for building and working
+/// </summary>
+/// <param name="logo"></param>
 void Preferences(string);
 
+/// <summary>
+/// works with ports
+/// </summary>
+/// <param name="logo"></param>
 void Ports(string);
 
+/// <summary>
+/// all opened sessions
+/// </summary>
+/// <param name="logo"></param>
 void Sessions(string);

@@ -19,4 +19,9 @@
 |##########################################################################################################|
 */
 
+/// <summary>
+/// choose a session
+/// </summary>
+/// <param name="logo"></param>
+/// <param name="choose"></param>
 void Choose(string, int);

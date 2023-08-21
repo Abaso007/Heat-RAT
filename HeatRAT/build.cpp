@@ -191,7 +191,7 @@ void Build()
 		}
 		printf("]\n\n");
 		fileCopy("Modules/stub/Stub.exe", "builded/HeatRAT.exe");
-		string version = "2.0.0";
+		string version = "3.0.2";
 		string log = "builded\\log.txt";
 
 		srand(time(0));
