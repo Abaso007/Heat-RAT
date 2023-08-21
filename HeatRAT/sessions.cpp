@@ -189,7 +189,6 @@ void Sessions(string logo)
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
 			cin.clear();
-			//cin.ignore(32767, '\n');
 			getline(cin, pc);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
