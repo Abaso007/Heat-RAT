@@ -40,26 +40,6 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 #
-# Prevent building in the source directory by default
-#
-option( ALLOW_SAME_DIRECTORY "Allow CMake to build in the source directory." OFF )
-if( ALLOW_SAME_DIRECTORY )
-elseif( "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}" )
-	message( FATAL_ERROR
-		"Do not use the source directory to build your files, instead delete CMakeCache.txt, create a separate folder and build there.\n"
-		"Example: (build in subdir 'build' and install to source dir)\n"
-		"  rm -f CMakeCache.txt\n"
-		"  mkdir build\n"
-		"  cd build\n"
-		"  cmake -G\"Unix Makefiles\" -DINSTALL_TO_SOURCE=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ..\n"
-		"  make install\n"
-		"  cd ..\n"
-		"  rm -rf build\n"
-		"To skip this check, set ALLOW_SAME_DIRECTORY to ON (-DALLOW_SAME_DIRECTORY=ON)" )
-endif()
-
-
-#
 # Global stuff
 #
 set( GLOBAL_LIBRARIES ${LINK_LIBRARIES}  CACHE INTERNAL "" )# list (comma separated values)
@@ -80,71 +60,6 @@ endif()
 
 
 #
-# 3rd party
-#
-set( CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/cmake  CACHE INTERNAL "" )
-include( CheckCSourceCompiles )
-include( CheckCSourceRuns )
-include( CheckIncludeFile )
-include( CheckFunctionExists )
-include( FindFunctionLibrary )
-include( TestBigEndian )
-
-
-#
-# PACKETVER
-#
-set( PACKETVER CACHE STRING "Sets the PACKETVER define of the servers. (see src/common/mmo.h)" )
-if( PACKETVER )
-	list( APPEND GLOBAL_DEFINITIONS  PACKETVER=${PACKETVER} )
-endif()
-
-
-#
-# Find git
-#
-message( STATUS "Detecting git" )
-find_package(Git)
-if(GIT_FOUND)
-	if(GIT_VERSION_STRING)
-		message(STATUS "Found git : ${GIT_EXECUTABLE} version (${GIT_VERSION_STRING})")
-	else()
-		message(STATUS "Found git : ${GIT_EXECUTABLE}")
-	endif()
-endif()
-
-include(GetGitVersion)
-get_git_version()
-
-#include(GetSvnVersion)
-#get_svn_version(SVN_VERSION)
-#message( STATUS "SVN_VERSION: ${SVN_VERSION}" )
-
-
-#
-# threads
-#
-message( STATUS "Detecting threads library" )
-set( CMAKE_THREAD_PREFER_PTHREAD 1 )
-find_package(Threads REQUIRED)
-if( CMAKE_THREAD_LIBS_INIT )
-	message( STATUS "Adding global library: ${CMAKE_THREAD_LIBS_INIT}" )
-	set_property( CACHE GLOBAL_LIBRARIES  PROPERTY VALUE ${GLOBAL_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} )
-endif()
-message( STATUS "Detecting threads library - done" )
-
-message( STATUS "Check if supporting Thread local storage (TLS)" )
-file( READ "${CMAKE_SOURCE_DIR}/3rdparty/cmake/tests/HAVE_TLS.c" _SOURCE )
-CHECK_C_SOURCE_RUNS( "${_SOURCE}" HAVE_TLS )
-if( HAVE_TLS )
-	message( STATUS "Check for TLS- yes" )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DHAVE_TLS" )
-else()
-	message( STATUS "Check for TLS - no" )
-endif()
-
-
-#
 # math library (FreeBSD/Linux/Solaris)
 #
 if( NOT WIN32 )
@@ -161,22 +76,6 @@ if( FUNCTION_FLOOR_LIBRARIES )
 endif()
 message( STATUS "Detecting math library (m) - done" )
 endif()
-
-
-#
-# dynamic loading library (Linux)
-#
-if( NOT WIN32 )
-message( STATUS "Detecting dynamic loading library (dl)" )
-set( CMAKE_REQUIRED_LIBRARIES ${GLOBAL_LIBRARIES} )
-find_function_library( dlopen FUNCTION_DLOPEN_LIBRARIES dl )
-if( FUNCTION_DLOPEN_LIBRARIES )
-	message( STATUS "Adding global library: ${FUNCTION_DLOPEN_LIBRARIES}" )
-	set_property( CACHE GLOBAL_LIBRARIES  PROPERTY VALUE ${GLOBAL_LIBRARIES} ${FUNCTION_DLOPEN_LIBRARIES} )
-endif()
-message( STATUS "Detecting dynamic loading library (dl) - done" )
-endif()
-
 
 #
 # networking library (Solaris/MinGW)
@@ -202,16 +101,6 @@ endif()
 # enable web server?
 #
 option( ENABLE_WEB_SERVER "Build web-server (default=ON)" ON )
-
-#
-# Test for big endian
-#
-TEST_BIG_ENDIAN( BIG_ENDIAN )
-if( NOT DEFINED BIG_ENDIAN )
-	message( WARNING "unable to determine endianess, only LITTLE ENDIAN is supported" )
-elseif( BIG_ENDIAN )
-	message( FATAL_ERROR "bigendian is not supported" )
-endif()
 
 
 #
@@ -279,18 +168,6 @@ if( ENABLE_EXTRA_DEBUG_CODE )
 	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DDEBUG" )
 	message( STATUS "Enabled extra DEBUG code" )
 endif()
-
-
-#
-# Enable EPOLL (default=OFF)
-# Only for Linux
-#
-option( ENABLE_EXTRA_SOCKET_POLL "enable SOCKET_EPOLL (default=OFF)" OFF )
-if( ENABLE_EXTRA_SOCKET_POLL )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DSOCKET_EPOLL" )
-	message( STATUS "Enabled SOCKET_EPOLL" )
-endif()
-
 
 #
 # Enable builtin memory manager (default=default)
@@ -387,14 +264,4 @@ elseif( ENABLE_PROFILER STREQUAL "gprof" )
 
 else()
 	message( FATAL_ERROR "invalid option ENABLE_PROFILER=${ENABLE_PROFILER} (valid options: ${PROFILER_OPTIONS})" )
-endif()
-
-
-#
-# Enable extra buildbot code (default=OFF)
-#
-option( ENABLE_EXTRA_BUILDBOT_CODE "enable extra buildbot code (default=OFF)" OFF )
-if( ENABLE_EXTRA_BUILDBOT_CODE )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DBUILDBOT" )
-	message( STATUS "Enabled extra BUILDBOT code" )
 endif()
