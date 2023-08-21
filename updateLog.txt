@@ -5,6 +5,7 @@ v3.0.3
 ◦ fixed bugs
 ◦ fixed connections
 ◦ fixed stub
+◦ reduced stub size
 ◦ fixed libs
 --------------------------------------
 20.06.2023
