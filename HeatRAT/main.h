@@ -21,10 +21,10 @@
 
 //all needed includes
 
-#include <iostream>
-#include <Windows.h>
-#include <fstream>
-#include <string>
+#include <iostream>//main lib
+#include <Windows.h>//main lib
+#include <fstream>//main lib
+#include <string>//main lib
 
 
-using namespace std;
+using namespace std;//namespace std
