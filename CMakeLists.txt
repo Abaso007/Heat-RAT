@@ -58,25 +58,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_GNUCC)
   #set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -O2" ); #need more test to enable this
 endif()
 
-
-#
-# math library (FreeBSD/Linux/Solaris)
-#
-if( NOT WIN32 )
-message( STATUS "Detecting math library (m)" )
-CHECK_INCLUDE_FILE( math.h HAVE_MATH_H )
-if( NOT HAVE_MATH_H )
-	message( FATAL_ERROR "math.h not found" )
-endif()
-set( CMAKE_REQUIRED_LIBRARIES ${GLOBAL_LIBRARIES} )
-find_function_library( floor FUNCTION_FLOOR_LIBRARIES m )
-if( FUNCTION_FLOOR_LIBRARIES )
-	message( STATUS "Adding global library: ${FUNCTION_FLOOR_LIBRARIES}" )
-	set_property( CACHE GLOBAL_LIBRARIES  PROPERTY VALUE ${GLOBAL_LIBRARIES} ${FUNCTION_FLOOR_LIBRARIES} )
-endif()
-message( STATUS "Detecting math library (m) - done" )
-endif()
-
 #
 # networking library (Solaris/MinGW)
 #
@@ -96,12 +77,6 @@ if( FUNCTION_GETHOSTBYNAME_LIBRARIES )
 endif()
 message( STATUS "Detecting networking library (socket/nsl/ws2_32) - done" )
 endif()
-
-#
-# enable web server?
-#
-option( ENABLE_WEB_SERVER "Build web-server (default=ON)" ON )
-
 
 #
 # Test monotonic clock
@@ -127,25 +102,6 @@ else()
 	message( STATUS "Check for monotonic clock - no" )
 endif()
 
-
-#
-# Test if function exists:
-#   setrlimit - used to set the socket limit
-#   strnlen - string length with upper scan bound
-#   getpid - process id
-#   gettid - thread id
-#
-CHECK_FUNCTION_EXISTS( setrlimit HAVE_SETRLIMIT )
-CHECK_FUNCTION_EXISTS( strnlen HAVE_STRNLEN )
-CHECK_FUNCTION_EXISTS( getpid HAVE_GETPID )
-CHECK_FUNCTION_EXISTS( gettid HAVE_GETTID )
-foreach( define HAVE_SETRLIMIT HAVE_STRNLEN HAVE_GETPID HAVE_GETTID )
-	if( ${define} )
-		set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -D${define}" )
-	endif()
-endforeach()
-
-
 #
 # Use RDTSC instruction as a timing source (time stamp counter on x86 since Pentium) (default=OFF)
 #
@@ -157,87 +113,6 @@ option( ENABLE_RDTSC "use RDTSC instruction as a timing source (default=OFF)" OF
 if( ENABLE_RDTSC )
 	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DENABLE_RDTSC" )
 	message( STATUS "Enabled RDTSC as a timing source" )
-endif()
-
-
-#
-# Enable extra debug code (default=OFF)
-#
-option( ENABLE_EXTRA_DEBUG_CODE "enable extra debug code (default=OFF)" OFF )
-if( ENABLE_EXTRA_DEBUG_CODE )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DDEBUG" )
-	message( STATUS "Enabled extra DEBUG code" )
-endif()
-
-#
-# Enable builtin memory manager (default=default)
-#
-set( MEMMGR_OPTIONS "default;yes;no" )
-set( ENABLE_MEMMGR "default" CACHE STRING "enable builtin memory manager: ${MEMMGR_OPTIONS} (default=default)" )
-set_property( CACHE ENABLE_MEMMGR  PROPERTY STRINGS ${MEMMGR_OPTIONS} )
-if( ENABLE_MEMMGR STREQUAL "default" )
-	# use source code default
-elseif( ENABLE_MEMMGR STREQUAL "yes" )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DUSE_MEMMGR" )
-	message( STATUS "Enabled the builtin memory manager" )
-elseif( ENABLE_MEMMGR STREQUAL "no" )
-	set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DNO_MEMMGR" )
-	message( STATUS "Disabled the builtin memory manager" )
-else()
-	message( FATAL_ERROR "invalid option ENABLE_MEMMGR=${ENABLE_MEMMGR} (valid options: ${MEMMGR_OPTIONS})" )
-endif()
-
-
-#
-# Enable memory library (default=system)
-#
-set( MEMORY_OPTIONS "system;memwatch;dmalloc;gcollect" )
-set( ENABLE_MEMORY "system" CACHE STRING "enable memory library: ${MEMORY_OPTIONS} (default=system)" )
-set_property( CACHE ENABLE_MEMORY  PROPERTY STRINGS ${MEMORY_OPTIONS} )
-if( ENABLE_MEMORY STREQUAL "system" )
-	# use system functions
-
-elseif( ENABLE_MEMORY STREQUAL "memwatch" )
-	CHECK_INCLUDE_FILE( memwatch.h HAVE_MEMWATCH_H )
-	find_library( MEMWATCH_LIBRARY memwatch )
-	mark_as_advanced( MEMWATCH_LIBRARY )
-	if( HAVE_MEMWATCH_H AND MEMWATCH_LIBRARY )
-		message( STATUS "Adding global library: ${MEMWATCH_LIBRARY}" )
-		set_property( CACHE GLOBAL_LIBRARIES    PROPERTY VALUE ${GLOBAL_LIBRARIES} ${MEMWATCH_LIBRARY} )
-		set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DMEMWATCH" )
-		message( STATUS "Enabled the memory library memwatch" )
-	else()
-		message( FATAL_ERROR "Failed to enable the memory library memwatch" )
-	endif()
-
-elseif( ENABLE_MEMORY STREQUAL "dmalloc" )
-	CHECK_INCLUDE_FILE( dmalloc.h HAVE_DMALLOC_H )
-	find_library( DMALLOC_LIBRARY dmalloc )
-	mark_as_advanced( DMALLOC_LIBRARY )
-	if( HAVE_DMALLOC_H AND DMALLOC_LIBRARY )
-		message( STATUS "Adding global library: ${DMALLOC_LIBRARY}" )
-		set_property( CACHE GLOBAL_LIBRARIES    PROPERTY VALUE ${GLOBAL_LIBRARIES} ${DMALLOC_LIBRARY} )
-		set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DDMALLOC -DDMALLOC_FUNC_CHECK" )
-		message( STATUS "Enabled the memory library dmalloc" )
-	else()
-		message( FATAL_ERROR "Failed to enable the memory library dmalloc" )
-	endif()
-
-elseif( ENABLE_MEMORY STREQUAL "gcollect" )
-	CHECK_INCLUDE_FILE( gc.h HAVE_GC_H )
-	find_library( GC_LIBRARY gc )
-	mark_as_advanced( GC_LIBRARY )
-	if( HAVE_GC_H AND GC_LIBRARY )
-		message( STATUS "Adding global library: ${GC_LIBRARY}" )
-		set_property( CACHE GLOBAL_LIBRARIES    PROPERTY VALUE ${GLOBAL_LIBRARIES} ${GC_LIBRARY} )
-		set_property( CACHE GLOBAL_DEFINITIONS  PROPERTY VALUE "${GLOBAL_DEFINITIONS} -DGCOLLECT" )
-		message( STATUS "Enabled the memory library gcollect" )
-	else()
-		message( FATAL_ERROR "Failed to enable the memory library gcollect" )
-	endif()
-
-else()
-	message( FATAL_ERROR "invalid option ENABLE_MEMORY=${ENABLE_MEMORY} (valid options: ${MEMORY_OPTIONS})" )
 endif()
 
 
