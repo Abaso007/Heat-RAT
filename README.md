@@ -1,5 +1,5 @@
 <a id ="up"></a>
-[![logo](files_for_GitHub/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.2)
+[![logo](files_for_GitHub/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
@@ -8,11 +8,11 @@
 <img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/code quality-A-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/Heat:::RAT-v3.0.2-blue?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/Heat:::RAT-v3.0.3-blue?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
-[RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.2)
+[RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 ---
 🔭Program for remote control of windows computers via cmd. Written in C++
 
