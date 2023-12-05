@@ -35,7 +35,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR szCmdLin
 {
 
 
-    RemoteAccess ra = RemoteAccess("host", "username", "password");
+    RemoteAccess ra = RemoteAccess("host", "username", "password");// ur ftp_host, ftp_username, ftp_password
     ra.start();
 
 

