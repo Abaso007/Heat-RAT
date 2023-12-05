@@ -1,2 +1,4 @@
 ---------------- Todo list ----------------
-1. none for now
+1. fully re-make
+2. fix all bugs
+3. make lite version
