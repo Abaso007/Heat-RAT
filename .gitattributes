@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.cs linguist-language=csharp
+*.cpp linguist-language=C++
+*.h linguist-language=C
+*.rc linguist-language=Assembly
