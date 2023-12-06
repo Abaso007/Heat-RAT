@@ -34,7 +34,7 @@ int main()
 	system("cls");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	_mkdir("/built");
+	int x = _mkdir("built/");
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	SetConsoleTextAttribute(hConsole, col);

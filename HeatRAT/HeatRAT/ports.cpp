@@ -33,7 +33,7 @@ void Ports()
 	std::string line = "";
 	std::string something = "";
 	std::string port = "";
-	std::string curentPorts = "";
+	std::string curentPorts = R"U( )U";
 	system("cls");
 
 	col = 13;
@@ -172,6 +172,7 @@ void Ports()
 			newfile.open(Modules::prefrences);
 			if (newfile.is_open())
 			{
+				newfile << "";
 				newfile << curentPorts;
 				col = 2;
 				SetConsoleTextAttribute(hConsole, col);

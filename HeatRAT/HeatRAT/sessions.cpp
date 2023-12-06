@@ -50,7 +50,7 @@ void Sessions()
 	std::string os = "";
 	int extraSessionsNum = 0;
 	std::string lang = "";
-	std::string curentUsers = "";
+	std::string curentUsers = R"U( )U";
 	int i = 0;
 	int count = 0;
 	system("cls");
@@ -67,7 +67,7 @@ void Sessions()
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|                                                        Sessions                                                         |\n");
+			printf("|                                                        Sessions                                                        |\n");
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
 			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
@@ -324,6 +324,7 @@ void Sessions()
 				newfile.open(Modules::user);
 				if (newfile.is_open())
 				{
+					newfile << "";
 					newfile << curentUsers;
 					col = 2;
 					SetConsoleTextAttribute(hConsole, col);
@@ -395,9 +396,9 @@ void Sessions()
 			int test = 0;
 			srand(time(NULL));
 			std::cout << "\n\n";
-
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
+
 			std::ifstream file(Modules::user);
 			if (file.is_open())
 			{
@@ -463,7 +464,7 @@ void Sessions()
 						case 9:
 							col = 4;
 							SetConsoleTextAttribute(hConsole, col);
-							printf("[ofline]\n");
+							printf("[offline]\n");
 							break;
 						case 10:
 							col = 2;
@@ -483,6 +484,20 @@ void Sessions()
 					count++;
 
 				}
+				std::ifstream file1(seesionPath);
+				if (file1.is_open())
+				{
+					if(getline(file1, line))
+					{
+						printf("%d.USER: %s ====> ", i, line.c_str());
+						col = 2;
+						SetConsoleTextAttribute(hConsole, col);
+						printf("[online]\n");
+					}
+
+				}
+				file1.close();
+
 			}
 			else
 			{
@@ -507,7 +522,7 @@ void Sessions()
 			std::cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			if (i <= extraSessionsNum && i >= 0)
+			if (i >= 0)
 			{
 				if (i == extraSessionsNum)
 				{
