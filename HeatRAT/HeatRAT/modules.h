@@ -301,7 +301,7 @@ using for: booom
 
 ========================================================================================================================)context";
 
-	extern std::string curentUSER;
+	extern inline std::string curentUSER = "";
 	extern inline std::string space = "          ";
 	extern inline std::string logs = "EMPTY";
 	extern inline std::string prefrences = "resources\\ports.txt";
