@@ -14,7 +14,7 @@
 
 Lite version of [HeatRAT](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 ---
-🔭Program for remote control of windows computers. Written in C++
+🔭Program for remote control of Windows computers. Huge functionality. It has full and lite versions.
 
 ⭐Please, star this repo if it was helpful⭐
 

