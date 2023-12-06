@@ -28,31 +28,31 @@ void Choose(int choose)
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	string command = "";
-	string line = "";
-	string something = "";
-	string curentUSER = "";
-	string ip = "";
-	string pc = "";
-	string use = "";
-	string date = "";
-	string mac = "";
-	string os = "";
-	string lang = "";
+	std::string command = "";
+	std::string line = "";
+	std::string something = "";
+	std::string curentUSER = "";
+	std::string ip = "";
+	std::string pc = "";
+	std::string use = "";
+	std::string date = "";
+	std::string mac = "";
+	std::string os = "";
+	std::string lang = "";
 	int count = 0;
 	system("cls");
-	string path = "";
+	std::string path = "";
 	col = 8;
 	SetConsoleTextAttribute(hConsole, col);
 	printf("Enter the path for downloading files: ");
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cin >> path;
+	std::cin >> path;
 	system("cls");
 
 	col = 13;
 	SetConsoleTextAttribute(hConsole, col);
-	cout << Modules::logo << endl;
+	std::cout << Modules::logo << std::endl;
 	col = 9;
 	SetConsoleTextAttribute(hConsole, col);
 	printf("--------------------------------------------------------------------------------------------------------------------------\n");
@@ -60,7 +60,7 @@ void Choose(int choose)
 	printf("--------------------------------------------------------------------------------------------------------------------------\n");
 	printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
 	printf("--------------------------------------------------------------------------------------------------------------------------\n");
-	ifstream file(Modules::user);
+	std::ifstream file(Modules::user);
 	if (file.is_open())
 	{
 		while (getline(file, line))
@@ -106,7 +106,7 @@ void Choose(int choose)
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> command;
+		std::cin >> command;
 		if (command == "!help")
 		{
 			Help(Modules::commands_session);
@@ -119,7 +119,7 @@ void Choose(int choose)
 		}
 		if (command == "!screenshot")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("doing...\n");
@@ -159,13 +159,13 @@ void Choose(int choose)
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!photoWebcam")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("doing...\n");
@@ -205,18 +205,18 @@ void Choose(int choose)
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!openLink")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("link: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("opening...\n");
@@ -231,12 +231,12 @@ void Choose(int choose)
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!directory")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -251,13 +251,13 @@ void Choose(int choose)
 			SetConsoleTextAttribute(hConsole, col);
 			printf("C:\\\n");
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!directoryContent")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			int file = 0;
 			int type = 0;
 			int much = 0;
@@ -356,22 +356,22 @@ void Choose(int choose)
 				default:
 					break;
 				}
-				cout << "\n";
+				std::cout << "\n";
 			}
 
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!createFolder")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the folder and folder name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("creating...\n");
@@ -385,18 +385,18 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("folder %s created", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!deleteFolder")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the folder and folder name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("deleting...\n");
@@ -410,19 +410,19 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("folder %s deleted", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!deleteFile")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the file and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("deleting...\n");
@@ -436,18 +436,18 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("file %s deleted", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!downloadFile")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the file on your computer and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("downloading...\n");
@@ -461,20 +461,20 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("file %s downloaded", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 
 		}
 		if (command == "!video")
 		{
 			float dur = 0;
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("duration in seconds: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> dur;
+			std::cin >> dur;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("recording...\n");
@@ -512,20 +512,20 @@ void Choose(int choose)
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!audio")
 		{
 
 			float dur = 0;
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("duration in seconds: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> dur;
+			std::cin >> dur;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("recording...\n");
@@ -563,19 +563,19 @@ void Choose(int choose)
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!runFile")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the file and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -589,19 +589,19 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("file %s is run\n", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!volume")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("volume: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -615,13 +615,13 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("volume is: %s\n", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!turnOff")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -635,13 +635,13 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!restart")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -659,39 +659,39 @@ void Choose(int choose)
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Hi, again!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!alt+f4")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!crazyCursor")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!wallpaper")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the image on your PC and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("wait...\n");
@@ -705,19 +705,19 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!move")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the folder without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("moveing...\n");
@@ -731,35 +731,35 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("curent folder %s", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!rename")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("new name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("curent name %s", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 
 		}
 		if (command == "!encrypt")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the file and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("encrypting...\n");
@@ -773,20 +773,20 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("file %s encrypted", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 
 		}
 		if (command == "!decrypt")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the file and file name, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("decrypting...\n");
@@ -800,13 +800,13 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("file %s decrypted", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!logs")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("searching...\n");
@@ -846,33 +846,33 @@ void Choose(int choose)
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Fatal ERROR!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!screamer")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!\n");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!moveFile")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the folder and file name without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			printf("path to the new folder without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("moveing...\n");
@@ -886,35 +886,35 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!lock")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("lock? (y/n): ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!downloadFolder")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("path to the folder, without spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("downloading...\n");
@@ -928,7 +928,7 @@ void Choose(int choose)
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("folder %s downloaded", something.c_str());
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!processes")
@@ -940,60 +940,60 @@ void Choose(int choose)
 		if (command == "!closeProces")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("proces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!banTM")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("ban? (y/n): ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!message")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("massage, on spaces: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 		if (command == "!CMDbomb")
 		{
 
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 2;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("done!!!");
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 		}
 

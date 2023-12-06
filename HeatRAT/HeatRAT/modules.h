@@ -14,7 +14,7 @@ namespace Modules
 #....######....##..................#######.....##.....####.....##.....##.....##....#####..........#######....###....######
 ##########################################################################################################################)LOGO";
 
-	extern inline string commands_menu = R"context(                                               commands available in menu
+	extern inline std::string commands_menu = R"context(                                               commands available in menu
 ========================================================================================================================
 command = "!help"
 using for: show a list of all available commands in menu
@@ -53,7 +53,7 @@ using for: all about app
 
 ========================================================================================================================)context";
 
-	extern inline string about = R"context(                                                                 about
+	extern inline std::string about = R"context(                                                                 about
 ========================================================================================================================
 Heat:::RAT allows a user to remotely access a computer or device from another location, over the internet.
 
@@ -69,7 +69,7 @@ Creator (https://github.com/Nick-Vinesmoke)
 Language Cpp
 ========================================================================================================================)context";
 
-	extern inline string commands_port = R"context(                                               commands available in ports
+	extern inline std::string commands_port = R"context(                                               commands available in ports
 ========================================================================================================================
 command = "!help"
 using for: show a list of all available commands in preferences
@@ -100,7 +100,7 @@ using for: test open ports
 
 ========================================================================================================================)context";
 
-	extern inline string commands_preferences = R"context(                                           commands available in preferences
+	extern inline std::string commands_preferences = R"context(                                           commands available in preferences
 ========================================================================================================================
 command = "!help"
 using for: show a list of all available commands in preferences
@@ -131,7 +131,7 @@ using for: turn on the experimental mode
 
 ========================================================================================================================)context";
 
-	extern inline string commands_sessions = R"context(                                             commands available in sessions
+	extern inline std::string commands_sessions = R"context(                                             commands available in sessions
 ========================================================================================================================
 command = "!help"
 using for: show a list of all available commands in preferences
@@ -162,7 +162,7 @@ using for: choose a section for future work
 
 ========================================================================================================================)context";
 
-	extern inline string commands_session = R"context(                                             commands available in session
+	extern inline std::string commands_session = R"context(                                             commands available in session
 ========================================================================================================================
 command = "!help"
 using for: show a list of all available commands in preferences
@@ -301,12 +301,12 @@ using for: booom
 
 ========================================================================================================================)context";
 
-	extern inline string curentUSER;
-	extern inline string space = "          ";
-	extern inline string logs = "EMPTY";
-	extern inline string prefrences = "resources\\ports.txt";
-	extern inline string user = "resources\\users.txt";
-	extern inline string proc = R"context(System Idle Process
+	extern std::string curentUSER;
+	extern inline std::string space = "          ";
+	extern inline std::string logs = "EMPTY";
+	extern inline std::string prefrences = "resources\\ports.txt";
+	extern inline std::string user = "resources\\users.txt";
+	extern inline std::string proc = R"context(System Idle Process
 		System
 		Registry
 		smss.exe

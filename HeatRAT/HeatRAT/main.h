@@ -25,6 +25,3 @@
 #include <Windows.h>//main lib
 #include <fstream>//main lib
 #include <string>//main lib
-
-
-using namespace std;//namespace std

@@ -29,16 +29,16 @@ void Ports()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	string command = "";
-	string line = "";
-	string something = "";
-	string port = "";
-	string curentPorts = "";
+	std::string command = "";
+	std::string line = "";
+	std::string something = "";
+	std::string port = "";
+	std::string curentPorts = "";
 	system("cls");
 
 	col = 13;
 	SetConsoleTextAttribute(hConsole, col);
-	cout << Modules::logo << endl;
+	std::cout << Modules::logo << std::endl;
 	col = 9;
 	SetConsoleTextAttribute(hConsole, col);
 	printf("%40s-----------------------------------------\n", Modules::space.c_str());
@@ -53,7 +53,7 @@ void Ports()
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> command;
+		std::cin >> command;
 		if (command == "!help")
 		{
 			Help(Modules::commands_port);
@@ -65,20 +65,20 @@ void Ports()
 		}
 		if (command == "!open")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("port number: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> port;
+			std::cin >> port;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("type (TCP/UDP/ALL): ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			if (something != "TCP" && something != "UDP" && something != "ALL")
 			{
 				col = 4;
@@ -101,10 +101,10 @@ void Ports()
 				printf("]\n");
 				if (stoi(port) >= 1025 && stoi(port) <= 5000 || stoi(port) == 80)
 				{
-					ofstream file(Modules::prefrences, ios::app);
+					std::ofstream file(Modules::prefrences, std::ios::app);
 					if (file.is_open())
 					{
-						file << port << endl;
+						file << port << std::endl;
 					}
 					else
 					{
@@ -126,17 +126,17 @@ void Ports()
 				}
 
 			}
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!close")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("port number: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> port;
+			std::cin >> port;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("closing...\n");
@@ -147,7 +147,7 @@ void Ports()
 				Sleep(2);
 			}
 			printf("]\n");
-			ifstream file(Modules::prefrences);
+			std::ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -168,7 +168,7 @@ void Ports()
 			file.close();
 			line = "";
 			curentPorts.pop_back();
-			ofstream newfile;
+			std::ofstream newfile;
 			newfile.open(Modules::prefrences);
 			if (newfile.is_open())
 			{
@@ -185,11 +185,11 @@ void Ports()
 				printf("Fatal ERROR!!!\n");
 			}
 			newfile.close();
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!closeAll")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("closing...\n");
@@ -200,7 +200,7 @@ void Ports()
 				Sleep(2);
 			}
 			printf("]\n");
-			ofstream newfile;
+			std::ofstream newfile;
 			newfile.open(Modules::prefrences);
 			if (newfile.is_open())
 			{
@@ -216,15 +216,15 @@ void Ports()
 				printf("Fatal ERROR!!!\n");
 			}
 			newfile.close();
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!ports")
 		{
 
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(Modules::prefrences);
+			std::ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -260,16 +260,16 @@ void Ports()
 
 			file.close();
 			line = "";
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!test")
 		{
 			int test = 0;
 			srand(time(NULL));
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(Modules::prefrences);
+			std::ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -355,17 +355,17 @@ void Ports()
 			}
 			file.close();
 			line = "";
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		else if (command != "!test" && command != "!ports" && command != "!closeAll" && command != "!close" && command != "!open" && command != "!menu" && command != "!help")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("unknown command!!!\n");
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 	}
 

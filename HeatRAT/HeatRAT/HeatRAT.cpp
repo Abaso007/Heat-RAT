@@ -30,7 +30,7 @@ int main()
 	HANDLE  hConsole;
 	int col = 9;
 	bool logoShow = true;
-	string command = "";
+	std::string command = "";
 	system("cls");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -47,7 +47,7 @@ int main()
 	printf("%56s", Modules::space.c_str());
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cin >> Modules::curentUSER;
+	std::cin >> Modules::curentUSER;
 	system("cls");
 
 
@@ -58,7 +58,7 @@ int main()
 			system("cls");
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << Modules::logo << endl;
+			std::cout << Modules::logo << std::endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("%40s-----------------------------------------\n", Modules::space.c_str());
@@ -71,7 +71,7 @@ int main()
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> command;
+		std::cin >> command;
 		logoShow = false;
 		if (command == "!help")
 		{
@@ -110,23 +110,23 @@ int main()
 		}
 		if (command == "!github")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "Creator (https://github.com/Nick-Vinesmoke)";
+			std::cout << "Creator (https://github.com/Nick-Vinesmoke)";
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		else if (command != "!help" && command != "!close" && command != "!about" && command != "!github" && command != "!logs" && command != "!build" && command != "!preferences" && command != "!ports" && command != "!sessions")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("unknown command!!!");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 
 

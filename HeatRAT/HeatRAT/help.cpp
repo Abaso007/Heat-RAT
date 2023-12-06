@@ -18,7 +18,7 @@
 #include"main.h"
 #include "transfer.h"
 
-void Help(string context)
+void Help(std::string context)
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -26,9 +26,9 @@ void Help(string context)
 
 	col = 8;
 	SetConsoleTextAttribute(hConsole, col);
-	cout << "\n\n";
+	std::cout << "\n\n";
 	std::cout << context;
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cout << "\n\n";
+	std::cout << "\n\n";
 }

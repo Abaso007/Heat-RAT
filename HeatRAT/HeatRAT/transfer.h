@@ -22,7 +22,7 @@
 /// <summary>
 /// shows all commands list
 /// </summary>
-void Help(string);
+void Help(std::string);
 
 /// <summary>
 /// build .exe

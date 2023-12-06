@@ -27,8 +27,8 @@ void Preferences()
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
 	bool logoShow = true;
-	string command = "";
-	string something = "";
+	std::string command = "";
+	std::string something = "";
 	logoShow = true;
 	system("cls");
 
@@ -38,7 +38,7 @@ void Preferences()
 		{
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << Modules::logo << endl;
+			std::cout << Modules::logo << std::endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("%40s-----------------------------------------\n", Modules::space.c_str());
@@ -51,7 +51,7 @@ void Preferences()
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> command;
+		std::cin >> command;
 		logoShow = false;
 		if (command == "!help")
 		{
@@ -67,7 +67,7 @@ void Preferences()
 		{
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 			printf("testing...\n");
 			printf("[");
 			for (int i = 0; i <= 60; i++)
@@ -80,16 +80,16 @@ void Preferences()
 			int speed = rand() % (100 - 10) + 10;
 			printf("download ===> %d\n", speed);
 			printf("upload ===> %d", speed + rand() % (20 - -3) + -3);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!reset")
 		{
-			string logs = "Modules\\Grabbed\\logs.txt";
-			string user = "Modules\\Grabbed\\users.txt";
-			string prefrences = "Modules\\Preferences\\ports.txt";
+			std::string logs = "Modules\\Grabbed\\logs.txt";
+			std::string user = "Modules\\Grabbed\\users.txt";
+			std::string prefrences = "Modules\\Preferences\\ports.txt";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 			printf("wait...\n");
 			printf("[");
 			for (int i = 0; i <= 60; i++)
@@ -98,7 +98,7 @@ void Preferences()
 				Sleep(5);
 			}
 			printf("]\n");
-			ofstream newfile;
+			std::ofstream newfile;
 			newfile.open(prefrences);
 			if (newfile.is_open())
 			{
@@ -114,7 +114,7 @@ void Preferences()
 				printf("Fatal ERROR!!!\n");
 			}
 			newfile.close();
-			ofstream newUser;
+			std::ofstream newUser;
 			newUser.open(user);
 			if (newUser.is_open())
 			{
@@ -130,7 +130,7 @@ void Preferences()
 				printf("Fatal ERROR!!!\n");
 			}
 			newUser.close();
-			ofstream newLogs;
+			std::ofstream newLogs;
 			newLogs.open(logs);
 			if (newLogs.is_open())
 			{
@@ -161,7 +161,7 @@ void Preferences()
 		{
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 			printf("checking...\n");
 			printf("[");
 			for (int i = 0; i <= 60; i++)
@@ -175,13 +175,13 @@ void Preferences()
 			printf("latest version installed\n");
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!errors")
 		{
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 			printf("checking...\n");
 			printf("[");
 			for (int i = 0; i <= 60; i++)
@@ -201,17 +201,17 @@ void Preferences()
 			}
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!experimentalMode")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Do you want to turn on experimental mode? (y/n) ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> something;
+			std::cin >> something;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			if (something == "y")
@@ -265,13 +265,13 @@ void Preferences()
 		}
 		else if ( command != "!experimentalMode" && command != "!errors" && command != "!reset" && command != "!update" && command != "!network" && command != "!help" && command != "!menu")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("unknown command!!!\n");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 	}
 

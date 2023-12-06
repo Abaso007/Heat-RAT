@@ -39,23 +39,23 @@ void Sessions()
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
 	bool logoShow = true;
-	string command = "";
-	string line = "";
+	std::string command = "";
+	std::string line = "";
 	logoShow = true;
-	string ip = "";
-	string pc = "";
-	string use = "";
-	string date = "";
-	string mac = "";
-	string os = "";
+	std::string ip = "";
+	std::string pc = "";
+	std::string use = "";
+	std::string date = "";
+	std::string mac = "";
+	std::string os = "";
 	int extraSessionsNum = 0;
-	string lang = "";
-	string curentUsers = "";
+	std::string lang = "";
+	std::string curentUsers = "";
 	int i = 0;
 	int count = 0;
 	system("cls");
-	string pcUser = GetUser();
-	string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736/cache.txt";
+	std::string pcUser = GetUser();
+	std::string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736/cache.txt";
 
 	while (true)
 	{
@@ -63,7 +63,7 @@ void Sessions()
 		{
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << Modules::logo << endl;
+			std::cout << Modules::logo << std::endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
@@ -71,7 +71,7 @@ void Sessions()
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
 			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			ifstream file(Modules::user);
+			std::ifstream file(Modules::user);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -110,7 +110,7 @@ void Sessions()
 			extraSessionsNum = i;
 			try 
 			{
-				ifstream file(seesionPath);
+				std::ifstream file(seesionPath);
 				if (file.is_open()) 
 				{
 					while (getline(file, line))
@@ -152,7 +152,7 @@ void Sessions()
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
-		cin >> command;
+		std::cin >> command;
 		logoShow = false;
 		if (command == "!help")
 		{
@@ -166,56 +166,56 @@ void Sessions()
 		}
 		if (command == "!open")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("User: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin.clear();
-			cin.ignore(32767, '\n');
-			getline(cin, use);
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::getline(std::cin, use);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("PC: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin.clear();
-			getline(cin, pc);
+			std::cin.clear();
+			std::getline(std::cin, pc);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("IP: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> ip;
+			std::cin >> ip;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("MAC: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> mac;
+			std::cin >> mac;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Install_date: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin.clear();
-			cin.ignore(32767, '\n');
-			getline(cin, date);
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::getline(std::cin, date);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("OS: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin.clear();
+			std::cin.clear();
 			//cin.ignore(32767, '\n');
-			getline(cin, os);
+			std::getline(std::cin, os);
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Language: ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> lang;
+			std::cin >> lang;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("opening...\n");
@@ -226,16 +226,16 @@ void Sessions()
 				Sleep(100 * (i / 5));
 			}
 			printf("]\n");
-			ofstream file(Modules::user, ios::app);
+			std::ofstream file(Modules::user, std::ios::app);
 			if (file.is_open())
 			{
-				file << use << endl;
-				file << pc << endl;
-				file << ip << endl;
-				file << mac << endl;
-				file << date << endl;
-				file << os << endl;
-				file << lang << endl;
+				file << use << std::endl;
+				file << pc << std::endl;
+				file << ip << std::endl;
+				file << mac << std::endl;
+				file << date << std::endl;
+				file << os << std::endl;
+				file << lang << std::endl;
 				col = 2;
 				SetConsoleTextAttribute(hConsole, col);
 				printf("done!!!\n");
@@ -250,7 +250,7 @@ void Sessions()
 				printf("Fatal ERROR!!!\n");
 			}
 			file.close();
-			cout << "\n\n";
+			std::cout << "\n\n";
 			system("pause");
 			system("cls");
 			logoShow = true;
@@ -259,7 +259,7 @@ void Sessions()
 		}
 		if (command == "!close")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			i = 0;
 			count = 0;
 			col = 8;
@@ -267,7 +267,7 @@ void Sessions()
 			printf("Session number (remember everything starts from 0): ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> i;
+			std::cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			if (i == extraSessionsNum)
@@ -291,11 +291,11 @@ void Sessions()
 				logoShow = true;
 				Sessions();
 				break;
-				cout << "\n\n";
+				std::cout << "\n\n";
 			}
 			else
 			{
-				ifstream file(Modules::user);
+				std::ifstream file(Modules::user);
 				if (file.is_open())
 				{
 					while (getline(file, line))
@@ -320,7 +320,7 @@ void Sessions()
 				curentUsers.pop_back();
 				file.close();
 				line = "";
-				ofstream newfile;
+				std::ofstream newfile;
 				newfile.open(Modules::user);
 				if (newfile.is_open())
 				{
@@ -344,14 +344,14 @@ void Sessions()
 				logoShow = true;
 				Sessions();
 				break;
-				cout << "\n\n";
+				std::cout << "\n\n";
 			}
 			
 		}
 
 		if (command == "!closeAll")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			std::remove(seesionPath.c_str());
@@ -363,7 +363,7 @@ void Sessions()
 				Sleep(2);
 			}
 			printf("]\n");
-			ofstream newfile;
+			std::ofstream newfile;
 			newfile.open(Modules::user);
 			if (newfile.is_open())
 			{
@@ -386,7 +386,7 @@ void Sessions()
 			logoShow = true;
 			Sessions();
 			break;
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!test")
 		{
@@ -394,15 +394,15 @@ void Sessions()
 			count = 0;
 			int test = 0;
 			srand(time(NULL));
-			cout << "\n\n";
+			std::cout << "\n\n";
 
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(Modules::user);
+			std::ifstream file(Modules::user);
 			if (file.is_open())
 			{
 
-				while (getline(file, line))
+				while (std::getline(file, line))
 				{
 					if (count == 0 + (7 * i))
 					{
@@ -476,7 +476,7 @@ void Sessions()
 							printf("Fatal ERROR!!!\n");
 							break;
 						}
-						cout << "\n";
+						std::cout << "\n";
 						i++;
 
 					}
@@ -493,18 +493,18 @@ void Sessions()
 			}
 			file.close();
 			line = "";
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 		if (command == "!choose")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			i = 0;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Session number (remember everything starts from 0): ");
 			col = 11;
 			SetConsoleTextAttribute(hConsole, col);
-			cin >> i;
+			std::cin >> i;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			if (i <= extraSessionsNum && i >= 0)
@@ -535,13 +535,13 @@ void Sessions()
 		}
 		else if (command != "!test" && command != "!choose" && command != "!test" && command != "!closeAll" && command != "!close" && command != "!open" && command != "!help" && command != "!menu")
 		{
-			cout << "\n\n";
+			std::cout << "\n\n";
 			col = 4;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("unknown command!!!\n");
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << "\n\n";
+			std::cout << "\n\n";
 		}
 	}
 }
