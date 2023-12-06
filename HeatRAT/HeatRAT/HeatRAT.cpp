@@ -29,12 +29,7 @@ int main()
 	HANDLE  hConsole;
 	int col = 9;
 	bool logoShow = true;
-	string space = "          ";
 	string command = "";
-	string line = "";
-	string something = "";
-	string curentUSER = "";
-	string logs = "Modules\\Grabbed\\logs.txt";
 	system("cls");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -47,12 +42,12 @@ int main()
 	RECT r;
 	GetWindowRect(hWindowConsole, &r);
 	MoveWindow(hWindowConsole, r.left, r.top, 910, 500, TRUE);
-	printf("\n\n\n\n\n\n\n\n\n\n%56sWelcome\n", space.c_str());
-	printf("%55sYour name?\n", space.c_str());
-	printf("%56s", space.c_str());
+	printf("\n\n\n\n\n\n\n\n\n\n%56sWelcome\n", Modules::space.c_str());
+	printf("%55sYour name?\n", Modules::space.c_str());
+	printf("%56s", Modules::space.c_str());
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
-	cin >> curentUSER;
+	cin >> Modules::curentUSER;
 	system("cls");
 
 
@@ -66,10 +61,10 @@ int main()
 			cout << Modules::logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("%40s|                  Menu                 |\n", space.c_str());
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("Hi %s!!!\n>>> !help ==for==> command list\n", curentUSER.c_str());
+			printf("%40s-----------------------------------------\n", Modules::space.c_str());
+			printf("%40s|                  Menu                 |\n", Modules::space.c_str());
+			printf("%40s-----------------------------------------\n", Modules::space.c_str());
+			printf("Hi %s!!!\n>>> !help ==for==> command list\n", Modules::curentUSER.c_str());
 		}
 		col = 6;
 		SetConsoleTextAttribute(hConsole, col);
@@ -92,7 +87,7 @@ int main()
 		}
 		if (command == "!logs")
 		{
-			Help(logs);
+			//add logs print
 		}
 		if (command == "!build")
 		{

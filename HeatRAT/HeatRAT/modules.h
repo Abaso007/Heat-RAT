@@ -68,5 +68,41 @@ and accessing files or software that are only available on a specific computer o
 Creator (https://github.com/Nick-Vinesmoke)
 Language Cpp
 ========================================================================================================================)context";
+
+	extern inline string comands_port = R"context(                                               commands available in ports
+========================================================================================================================
+command = "!help"
+using for: show a list of all available commands in preferences
+
+========================================================================================================================
+command = "!menu"
+using for: return to the menu
+
+========================================================================================================================
+command = "!open"
+using for: open port
+
+========================================================================================================================
+command = "!close"
+using for: close port
+
+========================================================================================================================
+command = "!closeAll"
+using for: close all
+
+========================================================================================================================
+command = "!ports"
+using for: show open ports
+
+========================================================================================================================
+command = "!test"
+using for: test open ports
+
+========================================================================================================================)context";
+
+	extern inline string curentUSER;
+	extern inline string space = "          ";
+	extern inline string logs = "resources\\logs.txt";
+	extern inline string prefrences = "resources\\ports.txt";
 }
 //R"context()context"

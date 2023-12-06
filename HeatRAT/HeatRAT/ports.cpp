@@ -19,6 +19,7 @@
 
 #include "main.h"
 #include "transfer.h"
+#include "modules.h"
 
 
 
@@ -28,48 +29,38 @@ void Ports()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	bool logoShow = true;
-	string space = "          ";
 	string command = "";
 	string line = "";
 	string something = "";
-	string curentUSER = "";
-
-	logoShow = true;
 	string port = "";
-	string curentPorts = R"P( )P";
+	string curentPorts = "";
 	system("cls");
-	string comands_port = "Modules\\commands\\Ports.txt";
-	string prefrences = "Modules\\Preferences\\ports.txt";
+
+	col = 13;
+	SetConsoleTextAttribute(hConsole, col);
+	cout << Modules::logo << endl;
+	col = 9;
+	SetConsoleTextAttribute(hConsole, col);
+	printf("%40s-----------------------------------------\n", Modules::space.c_str());
+	printf("%40s|                 Ports                 |\n", Modules::space.c_str());
+	printf("%40s-----------------------------------------\n", Modules::space.c_str());
+	printf("Hi %s!!!\n>>> !help ==for==> command list\n", Modules::curentUSER.c_str());
+
 	while (true)
 	{
-		if (logoShow)
-		{
-			col = 13;
-			SetConsoleTextAttribute(hConsole, col);
-			cout << logo << endl;
-			col = 9;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("%40s|                 Ports                 |\n", space.c_str());
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("Hi %s!!!\n>>> !help ==for==> command list\n", curentUSER.c_str());
-		}
 		col = 9;
 		SetConsoleTextAttribute(hConsole, col);
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
 		cin >> command;
-		logoShow = false;
 		if (command == "!help")
 		{
-			Help(comands_port);
+			Help(Modules::comands_port);
 		}
 		if (command == "!menu")
 		{
 			system("cls");
-			logoShow = true;
 			break;
 		}
 		if (command == "!open")
@@ -110,7 +101,7 @@ void Ports()
 				printf("]\n");
 				if (stoi(port) >= 1025 && stoi(port) <= 5000 || stoi(port) == 80)
 				{
-					ofstream file(prefrences, ios::app);
+					ofstream file(Modules::prefrences, ios::app);
 					if (file.is_open())
 					{
 						file << port << endl;
@@ -156,7 +147,7 @@ void Ports()
 				Sleep(2);
 			}
 			printf("]\n");
-			ifstream file(prefrences);
+			ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -178,7 +169,7 @@ void Ports()
 			line = "";
 			curentPorts.pop_back();
 			ofstream newfile;
-			newfile.open(prefrences);
+			newfile.open(Modules::prefrences);
 			if (newfile.is_open())
 			{
 				newfile << curentPorts;
@@ -210,7 +201,7 @@ void Ports()
 			}
 			printf("]\n");
 			ofstream newfile;
-			newfile.open(prefrences);
+			newfile.open(Modules::prefrences);
 			if (newfile.is_open())
 			{
 				col = 2;
@@ -233,7 +224,7 @@ void Ports()
 			cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(prefrences);
+			ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
@@ -278,7 +269,7 @@ void Ports()
 			cout << "\n\n";
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(prefrences);
+			ifstream file(Modules::prefrences);
 			if (file.is_open())
 			{
 				while (getline(file, line))
