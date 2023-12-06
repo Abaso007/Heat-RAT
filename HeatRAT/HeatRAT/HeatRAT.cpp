@@ -19,6 +19,7 @@
 
 #include"main.h"
 #include"transfer.h"
+#include"modules.h"
 
 
 
@@ -33,24 +34,8 @@ int main()
 	string line = "";
 	string something = "";
 	string curentUSER = "";
-	system("cls");
-	string logo = R"LOGO(##########################################################################################################################
-#....######....##.............######.....###...............####################.............######......###..............#
-#....######....##.............#####.......##...............#.######.######.####..............#####.......##..............#
-#..............##.....############.........######....#####.....##.....##.....##....#####.....####.........######....######
-#..............##.............###.....#.....#####.....####.....##.....##.....##.............####.....#....######....######
-#..............##.............###............####.....#########################...........#####............#####....######
-#....######....##.....##########..............###.....########################....##.......##..............#####....######
-#....#####.....##..............................##.....####.....##.....##.....##....####......................###....######
-#....######....##..................#######.....##.....####.....##.....##.....##....#####..........#######....###....######
-##########################################################################################################################)LOGO";
-	string comands_menu = "Modules\\Commands\\Menu.txt";
-	string about = "Modules\\About\\about.txt";
 	string logs = "Modules\\Grabbed\\logs.txt";
-	string dll1 = "Modules\\dlls\\libstdc++-6.dll";
-	string dll4 = "Modules\\dlls\\ucrtbased.dll";
-	string dll2 = "Modules\\dlls\\msvcp140d.dll";
-	string dll3 = "Modules\\dlls\\vcruntime140d.dll";
+	system("cls");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
@@ -78,7 +63,7 @@ int main()
 			system("cls");
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << logo << endl;
+			cout << Modules::logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("%40s-----------------------------------------\n", space.c_str());
@@ -95,7 +80,7 @@ int main()
 		logoShow = false;
 		if (command == "!help")
 		{
-			Help(comands_menu);
+			Help(Modules::comands_menu);
 		}
 		if (command == "!close")
 		{
@@ -103,7 +88,7 @@ int main()
 		}
 		if (command == "!about")
 		{
-			Help(about);
+			Help(Modules::about);
 		}
 		if (command == "!logs")
 		{
@@ -115,17 +100,17 @@ int main()
 		}
 		if (command == "!preferences")
 		{
-			Preferences(logo);
+			Preferences();
 			logoShow = true;
 		}
 		if (command == "!ports")
 		{
-			Ports(logo);
+			Ports();
 			logoShow = true;
 		}
 		if (command == "!sessions")
 		{
-			Sessions(logo);
+			Sessions();
 			logoShow = true;
 		}
 		if (command == "!github")

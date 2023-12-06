@@ -22,7 +22,6 @@
 /// <summary>
 /// shows all commands list
 /// </summary>
-/// <param name="path to .txt"></param>
 void Help(string);
 
 /// <summary>
@@ -34,17 +33,14 @@ void Build();
 /// <summary>
 /// preferences for building and working
 /// </summary>
-/// <param name="logo"></param>
-void Preferences(string);
+void Preferences();
 
 /// <summary>
 /// works with ports
 /// </summary>
-/// <param name="logo"></param>
-void Ports(string);
+void Ports();
 
 /// <summary>
 /// all opened sessions
 /// </summary>
-/// <param name="logo"></param>
-void Sessions(string);
+void Sessions();

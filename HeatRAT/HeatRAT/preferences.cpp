@@ -18,7 +18,7 @@
 #include "main.h"
 #include "transfer.h"
 
-void Preferences(string logo)
+void Preferences()
 {
 
 	HANDLE  hConsole;

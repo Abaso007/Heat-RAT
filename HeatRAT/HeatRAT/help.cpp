@@ -18,39 +18,16 @@
 #include"main.h"
 #include "transfer.h"
 
-void Help(string path)
+void Help(string context)
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	bool logoShow = true;
-	string space = "          ";
-	string command = "";
-	string line = "";
-	string something = "";
-	string curentUSER = "";
 
 	col = 8;
 	SetConsoleTextAttribute(hConsole, col);
 	cout << "\n\n";
-	ifstream file(path);
-	if (file.is_open())
-	{
-		while (getline(file, line))
-		{
-			cout << line << endl;
-		}
-	}
-	else
-	{
-
-		col = 4;
-		SetConsoleTextAttribute(hConsole, col);
-		printf("Fatal ERROR!!!");
-	}
-	file.close();
-	line = "";
+	std::cout << context;
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
 	cout << "\n\n";

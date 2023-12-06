@@ -33,7 +33,7 @@ std::string GetUser()
 }
 
 
-void Sessions(string logo)
+void Sessions()
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

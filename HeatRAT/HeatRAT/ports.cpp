@@ -22,7 +22,7 @@
 
 
 
-void Ports(string logo)
+void Ports()
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
