@@ -40,7 +40,7 @@ __Don't upload builded rat to Virustotal__. The more often you upload it, the mo
 
 ---
  
-### 📋Light version difference
+### 📋Lite version difference
 
 - It's faster than the full version
 - It's lightweight than the full version
@@ -51,7 +51,7 @@ __Don't upload builded rat to Virustotal__. The more often you upload it, the mo
  
 ### 🔨Building
 
-In case it's the light version, it's pointless to make a builder for it. Firstly you need to go into `main.cpp` file and insert your data in line number 38: `RemoteAccess ra = RemoteAccess("host", "username", "password");`. Then to build it manually you only need to have a Visual Studio installed with C++. I recommend you build it like release: 64/86. After the building finishes you'll find the build file in `x64\Release` or `x86\Release`.
+In case it's the lite version, it's pointless to make a builder for it. Firstly you need to go into `main.cpp` file and insert your data in line number 38: `RemoteAccess ra = RemoteAccess("host", "username", "password");`. Then to build it manually you only need to have a Visual Studio installed with C++. I recommend you build it like release: 64/86. After the building finishes you'll find the build file in `x64\Release` or `x86\Release`.
 
 ---
 
