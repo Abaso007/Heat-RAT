@@ -50,5 +50,13 @@
     <ClInclude Include="modules.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AssemblyInfo.rc">
+      <Filter>other</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
