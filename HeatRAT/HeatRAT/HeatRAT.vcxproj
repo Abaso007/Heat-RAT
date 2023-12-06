@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="modules.h" />
     <ClInclude Include="sessionSelecter.h" />
     <ClInclude Include="transfer.h" />
   </ItemGroup>

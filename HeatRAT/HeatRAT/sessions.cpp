@@ -19,7 +19,6 @@
 #include "transfer.h"
 #include "sessionSelecter.h"
 #include <Lmcons.h>
-#include <direct.h>
 #include "modules.h"
 
 std::string GetUser()
@@ -56,9 +55,7 @@ void Sessions()
 	int count = 0;
 	system("cls");
 	string pcUser = GetUser();
-	string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736";
-	int result = _mkdir(seesionPath.c_str());
-	seesionPath += "/cache.txt";
+	string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736/cache.txt";
 
 	while (true)
 	{
