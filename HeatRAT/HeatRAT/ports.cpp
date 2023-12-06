@@ -56,7 +56,7 @@ void Ports()
 		cin >> command;
 		if (command == "!help")
 		{
-			Help(Modules::comands_port);
+			Help(Modules::commands_port);
 		}
 		if (command == "!menu")
 		{

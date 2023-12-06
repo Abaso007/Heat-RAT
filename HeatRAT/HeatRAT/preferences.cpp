@@ -17,6 +17,7 @@
 
 #include "main.h"
 #include "transfer.h"
+#include "modules.h"
 
 void Preferences()
 {
@@ -26,14 +27,10 @@ void Preferences()
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
 	bool logoShow = true;
-	string space = "          ";
 	string command = "";
-	string line = "";
 	string something = "";
-	string curentUSER = "";
 	logoShow = true;
 	system("cls");
-	string comands_preferences = "Modules\\Commands\\Preferences.txt";
 
 	while (true)
 	{
@@ -41,13 +38,13 @@ void Preferences()
 		{
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << logo << endl;
+			cout << Modules::logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("%40s|              Preferences              |\n", space.c_str());
-			printf("%40s-----------------------------------------\n", space.c_str());
-			printf("Hi %s!!!\n>>> !help ==for==> command list\n", curentUSER.c_str());
+			printf("%40s-----------------------------------------\n", Modules::space.c_str());
+			printf("%40s|              Preferences              |\n", Modules::space.c_str());
+			printf("%40s-----------------------------------------\n", Modules::space.c_str());
+			printf("Hi %s!!!\n>>> !help ==for==> command list\n", Modules::curentUSER.c_str());
 		}
 		col = 6;
 		SetConsoleTextAttribute(hConsole, col);
@@ -58,7 +55,7 @@ void Preferences()
 		logoShow = false;
 		if (command == "!help")
 		{
-			Help(comands_preferences);
+			Help(Modules::commands_preferences);
 		}
 		if (command == "!menu")
 		{

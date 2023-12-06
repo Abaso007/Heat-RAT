@@ -75,7 +75,7 @@ int main()
 		logoShow = false;
 		if (command == "!help")
 		{
-			Help(Modules::comands_menu);
+			Help(Modules::commands_menu);
 		}
 		if (command == "!close")
 		{
@@ -87,7 +87,7 @@ int main()
 		}
 		if (command == "!logs")
 		{
-			//add logs print
+			Help(Modules::logs);
 		}
 		if (command == "!build")
 		{

